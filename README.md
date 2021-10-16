@@ -21,9 +21,9 @@ Full docs can be found here
 
 We also have a youtube tutorial
 
-*NUGET package*
+# *NUGET package*
 
-**Future Development**
+# **Future Development**
 
 We intend to add Schnorr signature scheme and taproot-compatibility in upcoming versions. 
 Contributing with a pull request is much appreciated!
