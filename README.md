@@ -9,11 +9,11 @@ Largely based on Jimmy Song's *Programming Bitcoin* book, ported in c#.
 **Note: this library is for development/testing or educational purposes and should not be used for real-life financial applications.**
 
 
-**Examples:**
+# **Examples:**
 
 
 
-**Documentation**
+# **Documentation**
 
 See our Tutorial 
 
