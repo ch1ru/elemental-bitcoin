@@ -20,6 +20,21 @@ BitcoinAddress addr = new PublicKey().getAddr(AddressType.legacy);
 Console.WriteLine(addr);
  ```
  
+ Signing a message
+ ```
+ byte[] message = Encoding.UTF8.GetBytes("This is an important message");
+	Signature sig = pk.sign(message);
+ ```
+ and verify
+ ```
+ if(pubKey.verify("This is an important message", sig)) {
+				Console.WriteLine("signature is valid");
+ }
+	else {
+				Console.WriteLine("Signature is not valid");
+ }
+ ```
+ 
 
 # **Documentation**
 
