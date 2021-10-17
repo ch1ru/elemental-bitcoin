@@ -10,8 +10,16 @@ Largely based on Jimmy Song's *Programming Bitcoin* book, ported in C#.
 
 
 # **Examples:**
+```
+/*Generate bitcoin address*/
 
-
+var rand = csrng.randomInt(32);
+PrivateKey pk = new PrivateKey(rand);
+PublicKey pubKey = pk.pubKey();
+BitcoinAddress addr = new PublicKey().getAddr(AddressType.legacy);
+Console.WriteLine(addr);
+ ```
+ 
 
 # **Documentation**
 
