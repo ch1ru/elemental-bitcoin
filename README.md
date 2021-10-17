@@ -35,6 +35,7 @@ else {
 }
 ```
 
+
 **Creating transactions**
 
 Inputs = previous txid + txindex + scriptSig (unlocking script) + sequence
