@@ -79,5 +79,5 @@ We also have a youtube tutorial
 
 # **Future Development**
 
-We intend to add Schnorr signature scheme and taproot-compatibility in upcoming versions. 
+Schnorr signature scheme and taproot-compatibility in upcoming versions. 
 Contributing with a pull request is much appreciated!
