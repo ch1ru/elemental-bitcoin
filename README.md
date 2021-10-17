@@ -40,10 +40,10 @@ else {
 Inputs = previous txid + txindex + scriptSig (unlocking script) + sequence
 ```
 List<byte[]> scriptSigCmds = new List<byte[]>();
-scriptSigCmds.Add(sig2.derEncode());
-scriptSigCmds.Add(new PublicKey(pub2).getUncompressed());
-Script unlockingScript = new Script(scriptSigCmds);
-TxIn input = new TxIn(prevTxid, 0, unlockingScript.serialise());
+scriptSigCmds.Add(sig.derEncode());
+scriptSigCmds.Add(pubKey.getUncompressed());
+Script scriptSig = new Script(scriptSigCmds);
+TxIn input = new TxIn(prevTxid, 0, scriptSig);
 ```
 
 Outputs = amount + scriptPubKey (locking script)
