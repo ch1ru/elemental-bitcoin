@@ -40,10 +40,9 @@ else {
 
 Inputs = previous txid + txindex + scriptSig (unlocking script) + sequence
 ```
-List<byte[]> scriptSigCmds = new List<byte[]>();
-scriptSigCmds.Add(sig.derEncode());
-scriptSigCmds.Add(pubKey.getUncompressed());
-Script scriptSig = new Script(scriptSigCmds);
+Script scriptSig = new Script();
+scriptSig.Add(sig.derEncode());
+scriptSig.Add(pubKey.getUncompressed());
 TxIn input = new TxIn(prevTxid, 0, scriptSig);
 ```
 
