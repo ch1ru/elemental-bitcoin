@@ -68,7 +68,7 @@ Broadcast  transaction to the network:
 
 # **Documentation**
 
-See our Tutorial 
+See our [Tutorial](https://ch1ru.github.io/elemental-bitcoin/) 
 
 Full docs can be found here
 
