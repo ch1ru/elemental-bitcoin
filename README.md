@@ -73,11 +73,11 @@ See our Tutorial
 
 Full docs can be found here
 
-We also have a youtube tutorial
-
 # *NUGET package*
 
 # **Future Development**
 
 Schnorr signature scheme and taproot-compatibility in upcoming versions. 
 Contributing with a pull request is much appreciated!
+
+Bitcoin address: bc1q25dlf23qvafvnewx5c0hnxkyv7u7pudz9an5se
