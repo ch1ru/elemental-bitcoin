@@ -59,7 +59,7 @@ Full transaction = version + inputs + outputs + locktime
 int version = 1;
 TxIn[] txins = new TxIn[] { input };
 TxOut[] txouts = new TxOut[] { output };
-byte[] locktime = new byte[] { 0xff, 0xff, 0xff, 0xff };
+byte[] locktime = 0xffffffff;
 Transaction tx = new Transaction(version, txins, txouts, locktime);
 ```
 
