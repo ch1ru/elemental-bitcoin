@@ -42,7 +42,7 @@ Inputs = previous txid + txindex + scriptSig (unlocking script) + sequence
 ```
 Script scriptSig = new Script();
 scriptSig.Add(sig.derEncode());
-scriptSig.Add(pubKey.getUncompressed());
+scriptSig.Add(pubKey.getCompressed());
 TxIn input = new TxIn(prevTxid, 0, scriptSig);
 ```
 
