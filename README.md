@@ -6,7 +6,7 @@ generation and signing, HD key derivation, bitcoin scripting, networking and seg
 Largely based on Jimmy Song's *Programming Bitcoin* book, ported in C#.
 
 
-***Note:** this library is for development/testing or educational purposes and shouldn't be used for real-life financial applications.*
+***Note:** this library is for development/testing or educational purposes and not intended for real-life financial applications.*
 
 
 # **Examples:**
