@@ -66,11 +66,11 @@ Broadcast  transaction to the network:
 ```
 ```
 
-# **Documentation**
+## **Documentation**
 
 See our [Tutorial](https://ch1ru.github.io/elemental-bitcoin/) 
 
-Full docs can be found here
+Full api docs can be found here
 
 # *NUGET package*
 
