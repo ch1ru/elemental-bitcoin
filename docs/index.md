@@ -1,5 +1,4 @@
-                            ````
-                            diff +[Keys>](/keys.md)
+                                                                   [Keys>](/keys.md)
 
 
 ## Programming Bitcoin in C#!
