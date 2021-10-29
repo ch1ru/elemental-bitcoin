@@ -25,6 +25,6 @@ Let's break down what we did:
 - Converted the public key to a human readable address by hashing it with sha256 then ripemd160 to get the public key hash, then encoding it using a format called Bech32 to make it more readable.
 - This address can be easily encoded in a qr code and acts as an invoice for a payee
 
-![Public key to address](https://github.com/bitcoinbook/bitcoinbook/blob/develop/images/mbc2_0405.png)
+![Public key to address](/images/pubkeytoaddress.png)
 
 
