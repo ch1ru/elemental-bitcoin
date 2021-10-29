@@ -1,15 +1,6 @@
-<style>
-.headertext
-div {
-    margin-top: 0px;
-    margin-bottom: 0px;
-    margin-right: 0px;
-    margin-left: 100px;
-  
-}
-</style>
 
-<div class= "headertext"><font size="2" color= "#ffffff"><a href='/keys.md'>Keys></a></font></div>
+
+<div><font size="3" color= "#ffffff"><a href='/keys.md'>                                        Keys></a></font></div>
 
 
 ## Programming Bitcoin in C#!
