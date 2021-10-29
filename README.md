@@ -62,8 +62,9 @@ byte[] locktime = 0xffffffff;
 Transaction tx = new Transaction(version, txins, txouts, locktime);
 ```
 
-###Broadcast  transaction to the network:
+Broadcast  transaction to the network:
 ```
+tx.broadcast();
 ```
 
 ## **Documentation**
