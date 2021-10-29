@@ -1,8 +1,3 @@
-
-
-<div><font size="3" color= "#ffffff"><a href='/keys.md'>                                        Keys></a></font></div>
-
-
 ## Programming Bitcoin in C#!
 
 This tutorial is for those wishing to understand bitcoin better by coding it. To find a full list of docs see our [api docs](link).
