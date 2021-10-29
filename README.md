@@ -72,7 +72,7 @@ See our [Tutorial](https://ch1ru.github.io/elemental-bitcoin/)
 
 Full api docs can be found here
 
-## *NUGET package*
+## NUGET package
 
 ## **Future Development**
 
