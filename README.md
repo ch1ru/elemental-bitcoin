@@ -9,7 +9,7 @@ Largely based on Jimmy Song's *Programming Bitcoin* book, ported in C#.
 ***Note:** this library is for development/testing or educational purposes and not intended for real-life financial applications.*
 
 
-# **Examples:**
+## **Examples:**
 
 **Generate bitcoin address**
 ```
@@ -72,9 +72,9 @@ See our [Tutorial](https://ch1ru.github.io/elemental-bitcoin/)
 
 Full api docs can be found here
 
-# *NUGET package*
+## *NUGET package*
 
-# **Future Development**
+## **Future Development**
 
 Schnorr signature scheme and taproot-compatibility in upcoming versions. 
 Contributing with a pull request is much appreciated!
