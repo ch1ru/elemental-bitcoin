@@ -11,7 +11,7 @@ Largely based on Jimmy Song's *Programming Bitcoin* book, ported in C#.
 
 ## **Examples:**
 
-###Generate bitcoin address
+**Generate bitcoin address**
 ```
 var rand = csrng.randomInt(32);
 PrivateKey pk = new PrivateKey(rand);
@@ -20,12 +20,12 @@ BitcoinAddress addr = pubKey.getAddr(AddressType.legacy);
 Console.WriteLine(addr);
  ```
  
- ###Signing a message
+ **Signing a message**
  ```
  byte[] message = Encoding.UTF8.GetBytes("This is an important message");
  Signature sig = pk.sign(message);
  ```
- ###and verify
+ and verify
  ```
 if(pubKey.verify("This is an important message", sig)) {
 	Console.WriteLine("signature is valid");
@@ -36,7 +36,7 @@ else {
 ```
 
 
-###Creating transactions
+**Creating transactions**
 
 Inputs = previous txid + txindex + scriptSig (unlocking script) + sequence
 ```
