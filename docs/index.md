@@ -1,3 +1,6 @@
+                            diff +[Keys>](/keys.md)
+
+
 ## Programming Bitcoin in C#!
 
 This tutorial is for those wishing to understand bitcoin better by coding it. To find a full list of docs see our [api docs](link).
