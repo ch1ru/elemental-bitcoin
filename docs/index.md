@@ -6,7 +6,7 @@ We will take a look at the fundamental building blocks that make bitcoin work, a
 
 ## Motivation
 
-Bitcoin has been an astonishingly successful project, so far, and hopefully will continue to surprise us. From cutting edge cryptography to the breakthrough in distributed consensus computing now called the blockchain, bitcoin currently serves millions who do not have access to reliable stores of value, banking or censorship free payments. And For the haters who criticise bitcoin for what it is, most have never tried to engage with or understand the core priciples and ideas of bitcoin, and are just wrong. If you are here you are not one of those, but would like to get a glimpse inside the bitcoin machine that has been running 24/7 with >99.98% uptime since Jan 2009. Hopefully by the end of the tutorial you'll gain a more solid understanding of what makes bitcoin tick, some of the incentives in play, how to code it yourself.
+Bitcoin has been an astonishingly successful project, so far, and hopefully will continue to surprise us. From cutting edge cryptography to the breakthrough in distributed consensus computing now called the blockchain, bitcoin currently serves millions who do not have access to reliable stores of value, banking and censorship free payments. If you are here, you would like to get a glimpse inside the bitcoin machine that has been running 24/7 with >99.98% uptime since Jan 2009. Hopefully by the end of the tutorial you'll gain a more solid understanding of what makes bitcoin tick, some of the incentives in play and how to code it yourself.
 
 ## What you will need
 
