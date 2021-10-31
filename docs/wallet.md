@@ -32,5 +32,21 @@ Console.WriteLine(new BitcoinAddress(pub2));
 - Derived children are also extended public/private keys, and can be converted to addresses
 
 ![bip32 derivation diagram](/images/bitcoin.png)
+
 Note that extended private keys can derive both the child private key and public key, but extended public keys (xpub) can only derive public keys. This may be very useful, for example if you are running a Web server and want to generate a fresh address, while storing the funds on an offline hardware wallet, this is now possible.
+
+## Creating the mnemonic 
+
+## Entropy to extended key
+
+## Deriving child private key from extended key
+
+## Deriving child public key from xpub
+
+## Hardened key derivation
+
+**Uses of hardened key derivation?**
+
+## Bip44
+
 
