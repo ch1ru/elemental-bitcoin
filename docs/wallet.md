@@ -16,9 +16,20 @@ Console.WriteLine(extKey);
 HDPublicKey xpub = extKey.Neuter();
 Console.WriteLine(xpub);
 
-var address1 = xpub.ChildAt(path: "m84/0'/0'/0/0");
-var address2 = xpub.ChildAt(index: 1);
-Console.WriteLine(address1);
-Console.WriteLine(address2);
+var pub1 = xpub.ChildAt(path: "m84/0'/0'/0/0");
+var pub2 = xpub.ChildAt(index: 1);
+Console.WriteLine(new BitcoinAddress(pub1));
+Console.WriteLine(new BitcoinAddress(pub2));
 ```
+
+## What we did
+
+- Defined our wordlist (some wallet applications might want a wordlist in a specific language, although this comes with the risk that wallets may not support the language, and fail to show funds).
+- Created a set of 12 words using our wordlist, and encrypt it with a very secure password
+- Created an extended key from these words (Remember the words just represent random entropy, which all private keys need)
+- Derived a public key from the private key
+- Both pairs of extended keys can now derive children keys.
+- Derived children are also extended public/private keys, and can be converted to addresses
+
+Note that extended private keys can derive both the child private key and public key, but extended public keys (xpub) can only derive public keys. This may be very useful, for example if you are running a Web server and want to generate a fresh address, while storing the funds on an offline hardware wallet, this is now possible.
 
