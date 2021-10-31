@@ -75,6 +75,10 @@ Full api docs can be found here
 
 ## NUGET package
 
+## Dependencies
+
+There are no additional dependencies needed for this project. 
+
 ## **Future Development**
 
 Schnorr signature scheme and taproot-compatibility in upcoming versions. 
