@@ -22,7 +22,7 @@ Console.WriteLine(new BitcoinAddress(pub1));
 Console.WriteLine(new BitcoinAddress(pub2));
 ```
 
-## What we did
+**What we did**
 
 - Defined our wordlist (some wallet applications might want a wordlist in a specific language, although this comes with the risk that other wallets may not support the language, and fail to show funds).
 - Created a set of 12 words using our wordlist, and encrypt it with a very secure password
