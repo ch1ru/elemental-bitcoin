@@ -73,7 +73,26 @@ HMAC gives us an adequate number of bits for the child private key and chain cod
 
 ## Deriving child private key from extended key
 
+To derive a child private key we first need an index. Each key can have 2^8 (256) children, however only half of that will be used for standard derivation as we'll soon see. 
+
+**The steps**
+
+- Append index to parent private key
+- HMAC256 using the parent chaincode as the key
+- The right 256 bits is the child chaincode 
+- The left 256 bits is added to the parent private key in the field of **N**
+- Notation for this is cpk = L|HMAC(ppk, pcc) + ppk, ccc = R|HMAC(ppk, pcc) 
+
 ## Deriving child public key from xpub
+
+A similar process is used for deriving the child public key from the xpub:
+
+- Append index to parent public key
+- HMAC using the parent chain code as the key
+- the right 256 bits is the child chaincode 
+- The base point (Generator) of secp256k1 is multiplied by the left 256 bits 
+- this is added to the parent point
+- The result is our child public key
 
 ## Hardened key derivation
 
