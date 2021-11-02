@@ -85,6 +85,8 @@ To derive a child private key we first need an index. Each key can have 2^8 (256
 - The left 256 bits is added to the parent private key in the field of **N**
 - Notation for this is cpk = L|HMAC(ppk, pcc) + ppk, ccc = R|HMAC(ppk, pcc) 
 
+![Deriving child private key](https://github.com/ch1ru/elemental-bitcoin/blob/main/docs/images/bitcoinbook-5.png)
+
 ## Deriving child public key from xpub
 
 A similar process is used for deriving the child public key from the xpub:
