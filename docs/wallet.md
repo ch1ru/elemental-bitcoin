@@ -56,7 +56,7 @@ With these in mind, it is very important not to reduce the number of mnemonic wo
 
 In the above example, should an adversary gain access to one set, in theory they cannot steal funds because they are missing 8 words. However, if they set they are missing contains that last word (which we know is the checksum word) then the adversary would only need to brute fore 7 words. Given current hardware capabilities, this is still a challenge, and would take multiple years to crack. Despite this, it's obvious that this scheme doesn't come close to matching the security of something like a multisig scheme
 
-## Entropy to extended key
+## Mnemonic to extended key
 
 The entropy now needs to be converted to a private key. We also need something called a chaincode. This will be used to derive children, as we will soon see. 
 
