@@ -96,8 +96,42 @@ A similar process is used for deriving the child public key from the xpub:
 
 ## Hardened key derivation
 
+What we have so far is great, but there is a big security risk if we were to only use this type of derivation. This is because if one of the child private keys get leaked, it's possible to deduce all its child private keys. Worse, because an attacker could obtain the chain code and public key from the xpub, they can also deduce the parent key! This leads us to create an alternative derivation function called hardened derivation. This is where the private key is used to derive the child key, instead of the public key. The process is shown below. 
+
 **Uses of hardened key derivation?**
+
+Because a public key cannot derive a hardened key (public keys cannot derive private keys) it's not useful for use with an xpub. However we can derive an xpub from a hardened key which mitigates the risk described above; the public key cannot be used in conjunction with the chain code to deduce any private keys. 
 
 ## Bip44
 
+The process we have been describing so far is a specification known as bip32. However this is very general, and not very standardised. What if, for example, different wallets used different derivation paths? There are billions of possible nodes where funds might be stored, it may be possible for money to get lost, even if we have the correct mnemonic! 
+
+Bip44 was a specification to solve this, by creating standardised uses for each chain:
+
+**Levels of the tree**
+
+- Level 1 is used for the "purpose" or type of coin (litecoin, bitcoin test et etc.) 
+- Level 2 is used for the account branch
+- Level 3 is used for receiving change (more on change addresses in transactions) 
+- Level 4 is the incremental index for each address
+
+**Examples**
+
+M44/0'/2'/0/0 is the third account and first address (bitcoin)
+M44/1'/0'/1/0 is the first change address in the first account (testnet bitcoin)
+
+Note that:
+- The first 2 levels are hardened for reasons discussed above
+- M is the master node (root key)
+
+## bip84 & 49
+
+Bip84 used the same structure as bip44 but is for segwit addresses. Bip49 is for segwit script addresses.
+
+For example,
+
+M84/0'/0'/1/0
+M49/0'/1'/0/0
+
+## Summary
 
