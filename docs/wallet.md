@@ -31,8 +31,6 @@ Console.WriteLine(new BitcoinAddress(pub2));
 - Both pairs of extended keys can now derive children keys.
 - Derived children are also extended public/private keys, and can be converted to addresses
 
-![bip32 derivation diagram](https://github.com/ch1ru/elemental-bitcoin/blob/main/docs/images/bitcoinbook.png)
-
 Note that extended private keys can derive both the child private key and public key, but extended public keys (xpub) can only derive public keys. This may be very useful, for example if you are running a Web server and want to generate a fresh address, while storing the funds on an offline hardware wallet, this is now possible.
 
 ## Creating the mnemonic 
@@ -45,6 +43,8 @@ The mnemonic is a set of words that relate to the random entropy that seeds a ke
 - hash the entropy with sha256 and add the first **4** bits to the end of the entropy
 - Divide the 132 bits into 12 equal segments of 11 bits
 - Using an ordered wordlist of 2048 words (as defined in bip39) map the binary value to the index of the wordlist
+
+![bip32 derivation diagram](https://github.com/ch1ru/elemental-bitcoin/blob/main/docs/images/bitcoinbook.png)
 
 **Security points to note**
 
