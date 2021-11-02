@@ -94,6 +94,8 @@ A similar process is used for deriving the child public key from the xpub:
 - this is added to the parent point
 - The result is our child public key
 
+![Deriving child public key](https://github.com/ch1ru/elemental-bitcoin/blob/main/docs/images/bitcoinbook-2.png)
+
 ## Hardened key derivation
 
 What we have so far is great, but there is a big security risk if we were to only use this type of derivation. This is because if one of the child private keys get leaked, it's possible to deduce all its child private keys. Worse, because an attacker could obtain the chain code and public key from the xpub, they can also deduce the parent key! This leads us to create an alternative derivation function called hardened derivation. This is where the private key is used to derive the child key, instead of the public key. The process is shown below. 
