@@ -44,7 +44,7 @@ The mnemonic is a set of words that relate to the random entropy that seeds a ke
 - Divide the 132 bits into 12 equal segments of 11 bits
 - Using an ordered wordlist of 2048 words (as defined in bip39) map the binary value to the index of the wordlist
 
-![bip32 derivation diagram](https://github.com/ch1ru/elemental-bitcoin/blob/main/docs/images/bitcoinbook.png)
+![creating the mnemonic](https://github.com/ch1ru/elemental-bitcoin/blob/main/docs/images/bitcoinbook.png)
 
 **Security points to note**
 
@@ -66,6 +66,8 @@ The entropy now needs to be converted to a private key. We also need something c
 - The passphrase is added as a key before hashing. This will act as a salt and make it impossible to get the master key from just the mnemonic 
 - The left 256 bits of the 512 bit output will be used as the private key
 - The right 256 bits is the chaincode
+
+![entropy to extended key](https://github.com/ch1ru/elemental-bitcoin/blob/main/docs/images/bitcoinbook-1.png)
 
 **Why HMAC512?**
 
