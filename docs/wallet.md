@@ -102,6 +102,8 @@ What we have so far is great, but there is a big security risk if we were to onl
 
 Because a public key cannot derive a hardened key (public keys cannot derive private keys) it's not useful for use with an xpub. However we can derive an xpub from a hardened key which mitigates the risk described above; the public key cannot be used in conjunction with the chain code to deduce any private keys. 
 
+![hardened key derivation](/images/bitcoinbook-3.png)
+
 ## Bip44
 
 The process we have been describing so far is a specification known as bip32. However this is very general, and not very standardised. What if, for example, different wallets used different derivation paths? There are billions of possible nodes where funds might be stored, it may be possible for money to get lost, even if we have the correct mnemonic! 
