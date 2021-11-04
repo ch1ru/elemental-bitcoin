@@ -12,3 +12,7 @@ So much so was this the case in China in the 12th century and in other societies
 
 The creator of bitcoin and others recognised this attack vector, and rebuilt this trust model so as not to rely on a central third party. This was technologically possible with the use of cryptographic math, computer networking and falling cost of electronic equipment to create many hardware nodes around the world.
 
+Imagine if there was a computer network of distributed nodes that could all verify transactions for financial incentives. They could prove to the whole world that the transaction was valid, using asymmetric key cryptography. Then due to the fact that there are many independent verifyers, no one could trust another but presumed that the majority were honest (because it paid better!). You don't need to imagine, because this system is conceptually what bitcoin is. 
+
+## Enough with the history, let's get to the meat of it!
+
