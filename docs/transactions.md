@@ -1,6 +1,6 @@
 ## Transactions
 
-transactions are the meat and bones of bitcoin and will take up a fair bit in this tutorial. But first, let's look at what value transfers in money look like historically and how bitcoin can reproduce similar properties of the millennia old technology of money. 
+transactions are the meat and bones of bitcoin and will take up a fair bit in this tutorial. But first, let's look at what value transfers in money look like historically and how bitcoin can reproduce similar properties of this millennia old technology. 
 
 ## A bit of history
 
