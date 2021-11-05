@@ -1,6 +1,10 @@
 ## Transactions
 
-A good definition of money is the *most tradable good in a society*. Traditionally money has been seashells, salt or gold coins. As such, transactions are the meat and bones of bitcoin and will take up a fair bit in this tutorial.
+transactions are the meat and bones of bitcoin and will take up a fair bit in this tutorial. But first, let's look at what value transfers in money look like historically and how bitcoin can reproduce similar properties of the millennia old technology of money. 
+
+## A bit of history
+
+A good definition of money is the *most tradable good in a society*. Traditionally money has been seashells, salt or gold coins.
 
 Conceptually, Bitcoin deals with transactions in similar aspecs that money has been traded for thousands of years, but with some striking uniqueness. One commonality in trade is trust in the currency being used to buy or sell a good or service. This is vital for trade to flourish; money provides a base unit of measurement and when implemented in society it comes to measure value in a highly accurate way. 
 
