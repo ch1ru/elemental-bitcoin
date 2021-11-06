@@ -10,6 +10,8 @@ y^2 = ax^3 + b
 
 An interesting property of elliptic curves is that they display intuitive properties we see in standard maths, namely: associativity and commutativity.
 
-If an elliptic curve is intersected, unless is some exceptions, it will intersect at 3 points, such that point A + point B = point C reflected on the x axis. 
+If an elliptic curve is intersected, unless is some exceptions, it will intersect at 3 points, such that: 
+
+Point A + point B = point C reflected on the x axis. 
 
 
