@@ -45,24 +45,28 @@ Op_Checksig
 If you remember we said it was a stack-based language, so we simply execute each command, and any data element we place on the stack:
 
 ```
-            
+Stack        Current command   
 <sig>      | Add signature
 -------------------
 
+Stack        Current command
 <Pubkey>   | Add pubkey
 <sig>      |
 -------------------
 
-<Pubkey>   | command: duplicate
+Stack        Current command
+<Pubkey>   | Op_dup (duplicate) 
 <Pubkey>   |
 <sig>      |
 -------------------
 
-<pubkeyhash>| command: hash160
+Stack         Current command
+<pubkeyhash>| Op_hash160
 <pubkey>    |
 <sig>       |
 --------------------
 
+Stack         Current command
 <pubkeyhash>| Add pubkey hash
 <pubkeyhash>|
 <pubkey>.   |
@@ -73,18 +77,21 @@ Op_equalverify is like 2 commands in 1:
 
 add 1 to the stack if items are equal
 
-1          | command: Op_Equal
+Stack        Current command
+1          | Op_Equal
 <pubkey>   |
 <sig>      |
 ---------------------
 
 verify that 1 is on the stack
 
-<pubkey>   | command: Op_Verify
+Stack        Current command
+<pubkey>   | Op_Verify
 <sig>      |
 ----------------------
 
-1          | command: Op_Checksig
+Stack        Current command
+1          | Op_Checksig
 
 ```
 
