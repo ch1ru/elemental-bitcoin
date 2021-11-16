@@ -1,4 +1,4 @@
-# elemental-bitcoin
+# elementary-bitcoin
 
 A hackey bitcoin library written for the .NET platform which implements most relevant bips. It provides basic functionality such as elliptic curve key
 generation and signing, HD key derivation, bitcoin scripting, networking and segwit. 
