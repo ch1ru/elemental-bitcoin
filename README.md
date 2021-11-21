@@ -77,7 +77,9 @@ Full api docs can be found here
 
 ## Dependencies
 
-There are no additional dependencies needed for this project. 
+- SshNet.Security.Cryptography (https://github.com/sshnet/Cryptography/)
+
+Used for Ripemd hashing algorithm
 
 ## **Future Development**
 
