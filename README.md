@@ -69,7 +69,7 @@ tx.broadcast();
 
 ## **Documentation**
 
-See our beginner's [Tutorial](https://ch1ru.github.io/elemental-bitcoin/) 
+See our beginner's [Tutorial](https://ch1ru.github.io/elementary-bitcoin/) 
 
 Full api docs can be found here
 
