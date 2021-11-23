@@ -17,4 +17,4 @@ Bitcoin has been an astonishingly successful project, so far, and hopefully will
 
 This library is based on Jimmy Song's *Programming Bitcoin* book, and is definitely worth a read for learning more. 
 
-[next](/Tutorial/keys.md)
+[next](https://github.com/ch1ru/elementary-bitcoin/tree/main/docs/Tutorial/keys.md)
