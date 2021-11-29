@@ -83,7 +83,12 @@ Can be installed with NUGET packet manager or from [website](https://www.nuget.o
 
 ## **Future Development**
 
-Schnorr signature scheme and taproot-compatibility in upcoming versions. 
+- Schnorr signature scheme and taproot-compatibility
+- Replace bip37 legacy bloom filters with bip158 compact blocks
+- Add support for torv2 &torv3
+- Add version 2 address formats
+- Add cmpctBlock network commands
+
 Contributing with a pull request is much appreciated!
 
 
