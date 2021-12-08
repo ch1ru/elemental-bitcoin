@@ -3,6 +3,10 @@ using System.Numerics;
 using System.Collections.Generic;
 using LBitcoin.Ecc;
 using LBitcoin.Tests;
+using LBitcoin.Networking;
+using LBitcoin.Networking.P2P;
+using System.Net;
+using System.IO;
 
 
 namespace LBitcoin
@@ -10,7 +14,7 @@ namespace LBitcoin
     class Program
     {
 		public static void Main() {
-
+			/*
 			//Secp256k1 curve = new Secp256k1();
 			BigInteger k1 = csrng.genKey();
 			PrivateKey pk1 = new PrivateKey(k1);
@@ -53,7 +57,7 @@ namespace LBitcoin
             }
 			*/
 
-			
+			/*
             FieldElementTest.RunAll();
 			Sha256FieldTest.RunAll();
             PointTest.RunAll();
@@ -63,7 +67,7 @@ namespace LBitcoin
             MerkleTreeTest.RunAll();
             MerkleBlockTest.RunAll();
             BloomTest.RunAll();
-            TransactionTest.RunAll();
+            //TransactionTest.RunAll();
             ScriptTest.RunAll();
 			HDTest.RunAll();
 			OpTest.RunAll();
@@ -90,7 +94,7 @@ namespace LBitcoin
 
 			//if (tx.verify()) Console.WriteLine("Verified!");
 			//HDTest.RunAll();
-
+			/*
 			var privateKey = new PrivateKey(5);
 			Signature sig = privateKey.sign(5);
 			PublicKey pubkey = privateKey.pubKey();
@@ -101,10 +105,33 @@ namespace LBitcoin
 				Console.WriteLine("NOT VALID!!!");
             }
 
-
-			//SimpleNode node = new SimpleNode(IPAddress.Loopback, 8333, false, true);
-			//node.handshake();
+			*/
+			/*
+			SimpleNode node = new SimpleNode(IPAddress.Loopback, 8333, false, true);
+			node.handshake();
+			_ = node.send(new VersionMessage(70014, null, 0, null, null, null, "1234567890", 100, false));
 			
+			byte[] bs = new byte[] { 0x80,0x11,0x01,0x00,0x08,0x04,0x00,0x00,0x00,0x00,0x00,0x00,0x23,0x49,0xa7,0x61,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x08,0x04,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x5e,0x6f,0x21,0x39,0x3d,0xa6,0x22,0x74,0x10,0x2f,0x53,0x61,0x74,0x6f,0x73,0x68,0x69,0x3a,0x32,0x32,0x2e,0x30,0x2e,0x30,0x2f,0xc6,0x51,0x05,0x00,0x01,0xf9,0xbe,0xb4,0xd9,0x76,0x65,0x72,0x61,0x63,0x6b,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x5d,0xf6,0xe0,0xe2 };
+			VersionMessage m = VersionMessage.parse(new MemoryStream(bs));
+			Console.WriteLine(Byte.bytesToString(m.serialise()));
+			Console.WriteLine(m);*/
+			Bip32Test.RunAll();
+			MnemonicTest.RunAll();
+			Bip84Test.RunAll();
+			Bip49Test.RunAll();
+
+			byte[] entropy = new byte[] { 0x80,0x80,0x80,0x80,0x80,0x80,0x80,0x80,0x80,0x80,0x80,0x80,0x80,0x80,0x80,0x80 };
+			Mnemonic mnemonic = new Mnemonic(new Wordlist(), entropy, "TREZOR");
+			Console.WriteLine(Byte.bytesToString(mnemonic.ToSeed("TREZOR")));
+			HDPrivateKey root = new HDPrivateKey(mnemonic, "TREZOR");
+			Console.WriteLine(root);
+
+
+			string m = "あいこくしん あいさつ あいだ あおぞら あかちゃん あきる あけがた あける あこがれる あさい あさひ あしあと";
+			Mnemonic m2 = new Mnemonic(m, "TREZOR");
+			HDPrivateKey xpk = new HDPrivateKey(mnemonic, "TREZOR");
+			Console.WriteLine(xpk);
+
 		}
-    }
+	}
 }
