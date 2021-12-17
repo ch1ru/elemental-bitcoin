@@ -79,7 +79,7 @@ Full api docs can be found here
 
 - SshNet cryptography library (https://github.com/sshnet/Cryptography/) Used for Ripemd hash algorithm.
 
-Can be installed with NUGET packet manager or from [website](https://www.nuget.org/packages/SshNet.Security.Cryptography/1.3.0?_src=template)
+Can be installed with NUGET packet manager or from [here](https://www.nuget.org/packages/SshNet.Security.Cryptography/1.3.0?_src=template)
 
 ## **Future Development**
 
