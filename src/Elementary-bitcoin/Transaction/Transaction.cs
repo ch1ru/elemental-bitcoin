@@ -27,7 +27,6 @@ namespace LBitcoin {
         byte[] hashSequence_;
 
         enum SigHash : uint {
-
             ALL = 1,
             NONE = 2,
             SINGLE = 3,
