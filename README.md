@@ -51,8 +51,8 @@ TxIn input = new TxIn(prevTxid, 0, scriptSig);
 Outputs = amount + scriptPubKey (locking script)
 ```
 byte[] hashedOutput = Hash.hash160(pubKey.getCompressed());
-Script lockingScript = Script.p2pkh(hashedOutput);
-TxOut output = new TxOut(100000, lockingScript) //output for 100,000 satoshis
+Script lockingScript = Script.p2wpkh(hashedOutput);
+TxOut output = new TxOut(100000, lockingScript); //output for 100,000 satoshis
 ```
 
 Full transaction = version + inputs + outputs + locktime
