@@ -13,11 +13,12 @@ Largely based on Jimmy Song's *Programming Bitcoin* book, ported in C#.
 
 **Generate bitcoin address**
 ```
-var rand = csrng.randomInt(32);
+var rand = csrng.genKey();
 PrivateKey pk = new PrivateKey(rand);
 PublicKey pubKey = pk.pubKey();
-BitcoinAddress addr = pubKey.getAddr(AddressType.legacy);
+BitcoinAddress addr = pubKey.getAddr(AddressType.nativeSegwit, testnet: true);
 Console.WriteLine(addr);
+//tb1qyk0j2yt44z4y9rns98duph7pkuarde5hhtskth
  ```
  
  **Signing a message**
