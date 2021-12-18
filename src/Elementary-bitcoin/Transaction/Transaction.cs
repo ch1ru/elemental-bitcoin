@@ -242,22 +242,6 @@ namespace LBitcoin {
             return sha256Digest;
         }
 
-        public byte[] getHash() { return hash_; }
-
-        public string ID { get { return Byte.bytesToString(this.hash_); } }
-
-        public int Version { get { return this.version_; } }
-
-        public TxIn[] TxIns { get { return this.inputs_; } }
-
-        public TxOut[] TxOuts { get { return this.outputs_; } }
-
-        public uint Locktime { get { return this.locktime_; } }
-
-        public bool isTestnet() {
-            return testnet_;
-        }
-
         /// <summary>
         /// Calculates the network fee.
         /// </summary>
@@ -555,6 +539,22 @@ namespace LBitcoin {
                 return tx;
             }
             return null; //return value of txid
+        }
+        
+        public byte[] getHash() { return hash_; }
+
+        public string ID { get { return Byte.bytesToString(this.hash_); } }
+
+        public int Version { get { return this.version_; } }
+
+        public TxIn[] TxIns { get { return this.inputs_; } }
+
+        public TxOut[] TxOuts { get { return this.outputs_; } }
+
+        public uint Locktime { get { return this.locktime_; } }
+
+        public bool isTestnet() {
+            return testnet_;
         }
     }
 }
