@@ -66,8 +66,6 @@ Transaction tx = new Transaction(version, txins, txouts, locktime);
 
 See our beginner's [Tutorial](https://ch1ru.github.io/elementary-bitcoin/) 
 
-Full api docs can be found here
-
 ## NUGET package
 
 ## Dependencies
