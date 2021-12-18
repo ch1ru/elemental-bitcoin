@@ -62,11 +62,6 @@ byte[] locktime = 0xffffffff;
 Transaction tx = new Transaction(version, txins, txouts, locktime);
 ```
 
-Broadcast  transaction to the network:
-```
-tx.broadcast();
-```
-
 ## **Documentation**
 
 See our beginner's [Tutorial](https://ch1ru.github.io/elementary-bitcoin/) 
