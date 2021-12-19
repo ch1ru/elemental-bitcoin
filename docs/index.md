@@ -2,7 +2,7 @@
 
 ## Programming Bitcoin in C#!
 
-![sherlock bitcoin meme](https://github.com/ch1ru/elementary-bitcoin/blob/main/docs/assets/elementary.png)
+![sherlock bitcoin meme](/assets/elementary.png)
 
 This tutorial is for those wishing to understand bitcoin better by coding it. To find a full list of docs see our [api docs](link).
 
