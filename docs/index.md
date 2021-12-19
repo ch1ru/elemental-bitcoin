@@ -23,8 +23,10 @@ Syntax highlighted code block
 
 **Bold** and _Italic_ and `Code` text
 
-[Link](url) and ![Image](https://github.com/ch1ru/elementary-bitcoin/blob/main/docs/assets/bip32.png)
+[Link](url) and 
 ```
+
+![Image](https://github.com/ch1ru/elementary-bitcoin/blob/main/docs/assets/bip32.png)
 
 For more details see [Basic writing and formatting syntax](https://docs.github.com/en/github/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax).
 
