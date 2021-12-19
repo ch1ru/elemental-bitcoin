@@ -2,7 +2,6 @@
 
 # Keys
 
-
 Ownership in bitcoin, or rather the ability to redeem coins, comes from public and private keys. The public key, what you give to the world, is how people can pay you. The private key is used to spend coins associated with a public key. This is distinctly different from a bank, where to spend money you have to prove to them your identity and that you can produce the secret associated with your account - ie your pin or card number. However the way this is done requires the spender to transmit their secret to the bank over a secure channel. Although the data is encrypted, it still leaves an attack vector for the secret to be intercepted, not to mention that the bank owns the exclusive right to do whatever they want with your money.
 
 With bitcoin, the secret key, a 256-bit number can prove an identity via signing a transaction. When this signature is verified, it can be assertained that the person wishing to spend the coins is the rightful owner. Note how once the transaction is signed, the signature can be broadcasted to the network unencrypted since there is no information such as personal details linked to the transaction. Or more importantly, there is no private data that can compromise the security of one's coins. The private key can remain on your device such as a phone or offline hardware wallet.
