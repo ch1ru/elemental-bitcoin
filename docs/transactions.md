@@ -1,3 +1,5 @@
+[/Intro](/index.md)|[/Install](/install.md)|[/keys](/keys.md)|[/Crypto](ecc.md)|[/Wallet](wallet.md)|[/Transactions](transactions.md)|[/Script](script.md)|[/Blocks](blocks.md)|[/Mining](/mining.md)|[/SPV](spv.md)|[/Segwit](segwit.md)
+
 ## Transactions
 
 transactions are the meat and bones of bitcoin and will take up a fair bit in this tutorial. But first, let's look at what value transfers in money look like historically and how bitcoin can reproduce similar properties of this millennia old technology. 
@@ -60,4 +62,6 @@ Outputs are perhaps a little simpler, and consists of only 2 parts:
 The amount is fairly easy, it's just an unsigned 8 byte value of the amount we want to spend in satoshis. Interestingly, it wasn't always an unsigned value. Back in the early days, someone tried their luck by creating a negative output value. Because of how this was interpreted, the person managed to give themselves 80 billion bitcoin! This is problematic given that there are only 21 million bitcoin that can exist! After a block rewind this was subsequently changed to only be a positive value. 
 
 The scriptpubkey is the spending condition for how the coins can be spent. This mostly consists of a hash of the public key. It can also be the hash of a script for more complex spending conditions, as we'll see later. 
+
+[/Intro](/index.md)|[/Install](/install.md)|[/keys](/keys.md)|[/Crypto](ecc.md)|[/Wallet](wallet.md)|[/Transactions](transactions.md)|[/Script](script.md)|[/Blocks](blocks.md)|[/Mining](/mining.md)|[/SPV](spv.md)|[/Segwit](segwit.md)
 
