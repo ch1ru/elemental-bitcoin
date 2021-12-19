@@ -70,6 +70,8 @@ See our beginner's [Tutorial](https://ch1ru.github.io/elementary-bitcoin/)
 
 ## NUGET package
 
+No package as of yet, stay tuned.
+
 ## Dependencies
 
 - SshNet cryptography library (https://github.com/sshnet/Cryptography/) Used for Ripemd hash algorithm.
