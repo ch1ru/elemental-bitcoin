@@ -19,6 +19,4 @@ Bitcoin has been an astonishingly successful project, so far, and hopefully will
 
 This library is based on Jimmy Song's *Programming Bitcoin* book, and is definitely worth a read for learning more. 
 
-[next](keys.md)
-
 [/Intro](/index.md)|[/Install](/install.md)|[/keys](/keys.md)|[/Wallet](wallet.md)
