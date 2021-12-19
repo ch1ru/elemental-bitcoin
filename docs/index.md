@@ -1,41 +1,20 @@
-## Welcome to GitHub Pages
+## Programming Bitcoin in C#!
 
-You can use the [editor on GitHub](https://github.com/ch1ru/elementary-bitcoin/edit/main/docs/index.md) to maintain and preview the content for your website in Markdown files.
+This tutorial is for those wishing to understand bitcoin better by coding it. To find a full list of docs see our [api docs](link).
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+We will take a look at the fundamental building blocks that make bitcoin work, and how to start building applications for bitcoin with our simple library. 
 
-### Markdown
+## Motivation
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+Bitcoin has been an astonishingly successful project, so far, and hopefully will continue to surprise us. From cutting edge cryptography to the breakthrough in distributed consensus computing now called the blockchain, bitcoin currently serves millions who do not have access to reliable stores of value, banking and censorship free payments. If you are here, you would like to get a glimpse inside the bitcoin machine that has been running 24/7 with >99.98% uptime since Jan 2009. Hopefully by the end of the tutorial you'll gain a more solid understanding of what makes bitcoin tick, some of the incentives in play and how to code it yourself.
 
-```markdown
-Syntax highlighted code block
+## What you will need
 
-# Header 1
-## Header 2
-### Header 3
+- Access to an IDE, we will be using Visual Studio as it's easy to import the project via NUGET
+- This repo, you can either import via NUGET or build from source
 
-- Bulleted
-- List
+## Special Thanks
 
-1. Numbered
-2. List
+This library is based on Jimmy Song's *Programming Bitcoin* book, and is definitely worth a read for learning more. 
 
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and 
-```
-
-![Image1](assets/bip32.png)
-![Image2](bip32.png)
-![Image3]("bip32.png")
-
-For more details see [Basic writing and formatting syntax](https://docs.github.com/en/github/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/ch1ru/elementary-bitcoin/settings/pages). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://support.github.com/contact) and we’ll help you sort it out.
+[next](https://github.com/ch1ru/elementary-bitcoin/tree/main/docs/Tutorial/keys.md)
