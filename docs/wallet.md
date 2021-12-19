@@ -1,6 +1,6 @@
 [/Intro](/index.md)|[/Install](/install.md)|[/keys](/keys.md)|[/Crypto](ecc.md)|[/Wallet](wallet.md)|[/Transactions](transactions.md)|[/Script](script.md)|[/Blocks](blocks.md)|[/Mining](/mining.md)|[/SPV](spv.md)|[/Segwit](segwit.md)
 
-## Wallets
+# Wallets
 
 What we have so far is a way to generate a single address and the potential to spend from that address using a digital signature (note we will go over signing in a later chapter). However, this is not very private, since a person has a single public key and if their identity is linked to that public key, anyone can tell what they are spending money on (since all transactions are recorded on a public ledger). We also don't have any accounting capabilities. Perhaps we want to separate our funds into three accounts, one for rent, one for investments and another for recreation. We cannot do this using single key pair without having multiple keys, which requires extra backup overheads. 
 
