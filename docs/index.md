@@ -1,3 +1,5 @@
+[/Intro](/index.md)|[/Install](/install.md)|[/keys](/keys.md)|[/Wallet](wallet.md)
+
 ## Programming Bitcoin in C#!
 
 This tutorial is for those wishing to understand bitcoin better by coding it. To find a full list of docs see our [api docs](link).
@@ -18,3 +20,5 @@ Bitcoin has been an astonishingly successful project, so far, and hopefully will
 This library is based on Jimmy Song's *Programming Bitcoin* book, and is definitely worth a read for learning more. 
 
 [next](keys.md)
+
+[/Intro](/index.md)|[/Install](/install.md)|[/keys](/keys.md)|[/Wallet](wallet.md)
