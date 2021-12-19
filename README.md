@@ -70,7 +70,7 @@ See our beginner's [Tutorial](https://ch1ru.github.io/elementary-bitcoin/)
 
 ## NUGET package
 
-No package as of yet, stay tuned.
+No NUGET package as of yet, on it's way.
 
 ## Dependencies
 
