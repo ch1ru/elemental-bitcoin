@@ -1,3 +1,5 @@
+[/Intro](/index.md)|[/Install](/install.md)|[/keys](/keys.md)|[/Wallet](wallet.md)
+
 ## Wallets
 
 What we have so far is a way to generate a single address and the potential to spend from that address using a digital signature. However, this is not very private, since a person has a single public key and if their identity is linked to that public key, anyone can tell what they are spending money on (since the transaction history is completely transparent). We also don't have any accounting capabilities. Perhaps we want to separate our funds into three accounts, one for rent, one for investments and another for recreation. We cannot do this using single key pair without having multiple keys, which requires extra backup overheads. 
@@ -142,4 +144,6 @@ M84/0'/0'/1/0
 M49/0'/1'/0/0
 
 ## Summary
+
+[/Intro](/index.md)|[/Install](/install.md)|[/keys](/keys.md)|[/Wallet](wallet.md)
 
