@@ -1,4 +1,4 @@
-[/Intro](/index.md)|[/Install](/install.md)|[/keys](/keys.md)|[/Wallet](wallet.md)
+[/Intro](/index.md)|[/Install](/install.md)|[/keys](/keys.md)|[/Crypto](ecc.md)|[/Wallet](wallet.md)|[/Transactions](transactions.md)|[/Script](script.md)|[/Blocks](blocks.md)|[/Mining](/mining.md)|[/SPV](spv.md)|[/Segwit](segwit.md)
 
 ## Wallets
 
@@ -150,5 +150,5 @@ M49/0'/1'/0/0
 
 ## Summary
 
-[/Intro](/index.md)|[/Install](/install.md)|[/keys](/keys.md)|[/Wallet](wallet.md)
+[/Intro](/index.md)|[/Install](/install.md)|[/keys](/keys.md)|[/Crypto](ecc.md)|[/Wallet](wallet.md)|[/Transactions](transactions.md)|[/Script](script.md)|[/Blocks](blocks.md)|[/Mining](/mining.md)|[/SPV](spv.md)|[/Segwit](segwit.md)
 
