@@ -44,7 +44,7 @@ The mnemonic is a set of words that relate to the random entropy that seeds a ke
 - Divide the 132 bits into 12 equal segments of 11 bits
 - Using an ordered wordlist of 2048 words (as defined in bip39) map the binary value to the index of the wordlist
 
-![creating the mnemonic](https://github.com/ch1ru/elemental-bitcoin/blob/main/docs/images/bitcoinbook.png)
+![creating the mnemonic](/assets/mnemonic_generation.png)
 
 **Security points to note**
 
@@ -62,12 +62,12 @@ The entropy now needs to be converted to a private key. We also need something c
 
 **Steps**
 
-- Hash the entropy using HMAC512 algorithm. This is known as a key stretching function, since it turns 256 bits into 512 bits
+- Hash the mnemonic using HMAC512 algorithm. This is known as a key stretching function, since it turns 256 bits into 512 bits
 - The passphrase is added as a key before hashing. This will act as a salt and make it impossible to get the master key from just the mnemonic 
 - The left 256 bits of the 512 bit output will be used as the private key
 - The right 256 bits is the chaincode
 
-![entropy to extended key](https://github.com/ch1ru/elemental-bitcoin/blob/main/docs/images/bitcoinbook-1.png)
+![mnemonic to extended key](/assets/mnemonic_to_seed.png)
 
 **Why HMAC512?**
 
@@ -85,7 +85,7 @@ To derive a child private key we first need an index. Each key can have 2^8 (256
 - The left 256 bits is added to the parent private key in the field of **N**
 - Notation for this is cpk = L|HMAC(ppk, pcc) + ppk, ccc = R|HMAC(ppk, pcc) 
 
-![Deriving child private key](https://github.com/ch1ru/elemental-bitcoin/blob/main/docs/images/bitcoinbook-5.png)
+![Deriving child private key](/assets/nonhardened_derivation.png)
 
 ## Deriving child public key from xpub
 
@@ -98,7 +98,7 @@ A similar process is used for deriving the child public key from the xpub:
 - this is added to the parent point
 - The result is our child public key
 
-![Deriving child public key](https://github.com/ch1ru/elemental-bitcoin/blob/main/docs/images/bitcoinbook-2.png)
+![Deriving child public key](/assets/derive_pubkey.png)
 
 ## Hardened key derivation
 
@@ -108,7 +108,7 @@ What we have so far is great, but there is a big security risk if we were to onl
 
 Because a public key cannot derive a hardened key (public keys cannot derive private keys) it's not useful for use with an xpub. However we can derive an xpub from a hardened key which mitigates the risk described above; the public key cannot be used in conjunction with the chain code to deduce any private keys. 
 
-![hardened key derivation](https://github.com/ch1ru/elemental-bitcoin/blob/main/docs/images/bitcoinbook-3.png)
+![hardened key derivation](/assets/hardened_derivation.png)
 
 ## Bip44
 
