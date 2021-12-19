@@ -27,6 +27,6 @@ Let's break down what we did:
 - Converted the public key to a human readable address by double hashing it with sha256 then ripemd160 to get the public key hash, then encoding it using a format called Bech32 to make it more readable.
 - This address can be easily encoded in a qr code and acts as an invoice for a payee
 
-![Public key to address](https://github.com/ch1ru/elementary-bitcoin/blob/main/docs/assets/pubkeytoaddress.png)
+![Public key to address](pubkeytoaddress.png)
 
 [next](/wallet.md)
