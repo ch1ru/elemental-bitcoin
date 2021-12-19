@@ -2,9 +2,9 @@
 
 ## Wallets
 
-What we have so far is a way to generate a single address and the potential to spend from that address using a digital signature. However, this is not very private, since a person has a single public key and if their identity is linked to that public key, anyone can tell what they are spending money on (since the transaction history is completely transparent). We also don't have any accounting capabilities. Perhaps we want to separate our funds into three accounts, one for rent, one for investments and another for recreation. We cannot do this using single key pair without having multiple keys, which requires extra backup overheads. 
+What we have so far is a way to generate a single address and the potential to spend from that address using a digital signature (note we will go over signing in a later chapter). However, this is not very private, since a person has a single public key and if their identity is linked to that public key, anyone can tell what they are spending money on (since all transactions are recorded on a public ledger). We also don't have any accounting capabilities. Perhaps we want to separate our funds into three accounts, one for rent, one for investments and another for recreation. We cannot do this using single key pair without having multiple keys, which requires extra backup overheads. 
 
-In this chapter, we will look at how to solve this with a data structure called a hierarchical deterministic tree, which is the basis for all modern wallets. This allows us to have many keys and addresses that can be derived from a single root private and public key. It will also be necessary to make an easy back up of this key, which we will also discuss in this chapter. If you Remember, the private key is just a 256 bit number and not very human readable! This is where the idea of a mnemonic comes in - a direct mapping of the random entropy, which can be translated into the extended key. 
+In this chapter, we will look at how to solve this with a data structure called a hierarchical deterministic tree, which is the basis for all modern wallets. This allows us to have many keys and addresses that can be derived from a single root private and public key. It will also be necessary to make an easy back up of this key, which we will also discuss in this chapter. If you Remember, the private key is just a 256-bit number and not very human readable (try writing down 32 hex numbers and you will know what I mean!). This is where the idea of a mnemonic comes in - a direct mapping of the random entropy into human readable words, which can be later translated into the extended key or root of the tree.
 
 Since we are already getting ahead of ourselves, let's look at the code to do this, then break it apart. 
 
@@ -27,17 +27,20 @@ Console.WriteLine(new BitcoinAddress(pub2));
 **What we did**
 
 - Defined our wordlist (some wallet applications might want a wordlist in a specific language, although this comes with the risk that other wallets may not support the language, and fail to show funds).
-- Created a set of 12 words using our wordlist, and encrypt it with a very secure password
+- Created a set of 12 words using our wordlist, and encrypt it with a very secure password: "password123"
 - Created an extended key from these words (Remember the words just represent random entropy, which all private keys need)
 - Derived a public key from the private key
 - Both pairs of extended keys can now derive children keys.
 - Derived children are also extended public/private keys, and can be converted to addresses
 
+**What is an extended key?**
+Put simply, an extended key, also known as an xpriv, is a single private key that can be used to generate all private keys in the tree. There is also an extended public key (also known as xpub) which can generate all the child public keys. 
+
 Note that extended private keys can derive both the child private key and public key, but extended public keys (xpub) can only derive public keys. This may be very useful, for example if you are running a Web server and want to generate a fresh address, while storing the funds on an offline hardware wallet, this is now possible.
 
 ## Creating the mnemonic 
 
-The mnemonic is a set of words that relate to the random entropy that seeds a key. Mnemonics can be in different sizes, but mostly appear either as 12 or 24 words. In our example, we will show how a 12 word mnemonic is generated, using 128 bits of random entropy. 
+The mnemonic is a set of words that relate to the random entropy that seeds a key. Mnemonics can be in different sizes, but mostly appear either as 12 or 24 words. In our example, we will show how a 12 word mnemonic is generated, using 128 bits of random entropy. It is very important that the entropy is genrated securely by a cryptographically secure random number generator. Seeding entropy based on time-based components in the underlying hardware is usually insufficient by itself. Flipping a coin, taking randomness from flipping a coin, mouse input or background ligh and sound can be effective ways to ensure sufficient random entropy for a key. 
 
 **Steps**
 
@@ -64,8 +67,10 @@ The entropy now needs to be converted to a private key. We also need something c
 
 **Steps**
 
-- Hash the mnemonic using HMAC512 algorithm. This is known as a key stretching function, since it turns 256 bits into 512 bits
+- Hash the mnemonic using HMAC512 algorithm.
 - The passphrase is added as a key before hashing. This will act as a salt and make it impossible to get the master key from just the mnemonic 
+- Perform 2048 iterations of this process
+- The result is hashed again with HMAC512 with the password "Bitcoin seed"
 - The left 256 bits of the 512 bit output will be used as the private key
 - The right 256 bits is the chaincode
 
