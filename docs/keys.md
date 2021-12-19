@@ -1,3 +1,7 @@
+=============================================================================
+[/Intro](/index.md)|[/Install](/install.md)|[/keys](/keys.md)|[/Wallet](wallet.md)
+=============================================================================
+
 # Keys
 
 
@@ -29,4 +33,6 @@ Let's break down what we did:
 
 ![Public key to address](/assets/pubkeytoaddress.png)
 
-[next](/wallet.md)
+=============================================================================
+[/Intro](/index.md)|[/Install](/install.md)|[/keys](/keys.md)|[/Wallet](wallet.md)
+=============================================================================
