@@ -27,6 +27,8 @@ Syntax highlighted code block
 ```
 
 ![Image1](assets/bip32.png)
+![Image2](bip32.png)
+![Image3]("bip32.png")
 
 For more details see [Basic writing and formatting syntax](https://docs.github.com/en/github/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax).
 
