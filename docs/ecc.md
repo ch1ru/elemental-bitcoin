@@ -71,8 +71,18 @@ Interestingly, all the mathmatic identities and properties like associativity an
 
 A group in a cryptosystem requires at least these 4 properties:
 
-- Associativity
-- 
+- Associativity - (A + B) + C = A + (B + C). This isn't immediately obvious in elliptic curves, but try visualising P + Q 
+- Closure
+- Inverse element
+- Identity element
+
+In addition to these there is commutativity, which we mentioned previously. A group is commutative if x * y = y * x. This is easy to prove in elliptic curves; a line intersecting P and Q will produce the same result no mater the order.
+
+A group is called cyclic if there is an element, G, which spans all elements in the group (g^1, g^2, g^3 ...etc). In elliptic curves, this is also true since the base point G of the curve will span all points in the additive group (G, 2G, 3G % P).
+
+All these properties come organically within the elliptic curve cryptosystem except one: the identity element. Which point can we add to another to get its identity? There is none. To combat this, there is an imaginary point called the point at infinity which, when added to a point, will get its identity. We can visualise this by drawing a vertical line down the elliptic curve. The line will intersect at exactly 2 places. We also say it intersects at a third: the point at infinity. Following the rules we have established so far, when we add the point at infinity to P, the line intersects at one other place, at -P. Reflecting this back across the x-axis gives us P. Thus we have found our missing axiom! (albeit a slightly convuluted and perhaps uintuitive sense).
+
+
 
 
 
