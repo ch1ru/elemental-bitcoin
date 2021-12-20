@@ -10,7 +10,7 @@ An elliptic curve is any curve with the general formula:
 
 y^2 = ax^3 + ax + b
 
-An interesting property of elliptic curves is that they display intuitive properties we see in standard maths, namely: associativity and commutativity.
+For example, Bitcoin uses the curve equation y^2 = x^3 + 7 which is defined in NIST's list of secure elliptic curves. An interesting property of elliptic curves is that they display intuitive properties we see in standard maths, namely: associativity and commutativity.
 
 If an elliptic curve is intersected by a straight line, unless is some exceptions, it will intersect at 3 points, such that: 
 
@@ -59,7 +59,7 @@ We Mentioned previously that a public key is a point on an elliptic curve. The p
 
 ## Elliptic curves within finite fields
 
-All the maths we have covered so far is all useful and correct(ish), however it's not a full cryptosystem yet. The curve is actually bounded by a finite field. All the operations we have covered do indeed take place, but within a prime field. The equation that bitcoin uses called Secp256k1 curve equation is actually: y^2 = x^3 + 7 mod P, where P is a very large prime (2^256 - 2^32 - 977 to be exact). 
+All the maths we have covered so far is all useful and correct(ish), however it's not a full cryptosystem yet. The curve is actually bounded by a finite field. All the operations we have covered do indeed take place, but within a prime field. The equation that bitcoin uses is called Secp256k1, its equation is actually: y^2 = x^3 + 7 mod P, where P is a very large prime (2^256 - 2^32 - 977 to be exact). 
 
 This gives the curve some interesting properties. Visually, it no longer looks like a curve but a series of scattered points.
 
@@ -90,6 +90,8 @@ All these properties come organically within the elliptic curve cryptosystem exc
 
 
 ## Let's summarize the whole process
+
+If you didn't get some of the maths, not to worry! this summary will provide you with the most important points. The rest of this chapter will not require a deeper understanding than the basic concept of public key cryptography with signing and verification.
 
 
 [/Intro](/index.md)|[/Install](/install.md)|[/keys](/keys.md)|[/Crypto](ecc.md)|[/Wallet](wallet.md)|[/Transactions](transactions.md)|[/Script](script.md)|[/Blocks](blocks.md)|[/Mining](/mining.md)|[/SPV](spv.md)|[/Segwit](segwit.md)
