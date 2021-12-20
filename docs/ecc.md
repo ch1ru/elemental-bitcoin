@@ -75,6 +75,7 @@ A group in a cryptosystem requires at least these 4 properties:
 
 (A + B) + C:
 ![associativity](/assets/associative1.png)
+
 (B + C) + A:
 ![associativity](/assets/associative2.png)
 
