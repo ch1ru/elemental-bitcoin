@@ -29,7 +29,7 @@ We can also intersect at the tangent (P) then use differentiation to find the ne
 **The maths for the last diagram**
 
 We are trying to find the point of the next intersect (x3, y3) or -R in the diagram.
-
+```
 Equation of curve: y^2 = x^3 + ax + b
 
 Find differentiation equation: 
@@ -41,12 +41,15 @@ dy/dx 2y = 3x^2 + a
 dy/dx = (3x^2 + a)/2y
 
 Gradient, m = (3(p.x)^2 + a) / 2(p.y)
-
+```
+```
 Using Fermat's little theorem, we know that: x3 = m^2 - 2(p.x), So we can calculate the x-coordinate x3
-
+```
+```
 We also know that y3 = (m * (p.x - x3)) - p.y, so we now know -R!
 
 We can reflect over the x-axis so negate y3.
+```
 
 ## So how are elliptic curve keys made?
 
@@ -54,7 +57,7 @@ We Mentioned previously that a public key is a point on an elliptic curve. The p
 
 ## How big is the private key?
 
-256 bits can be stored in a 32-byte hex string. Despite this, 2^256 is insanely huge! To put it into perspective, It is thought that the milky way may contain around 10^67 atoms. However this is only a fraction of the number of possible elliptic curve private keys! Clearly, in a crypto system which calculates the public key by hopping around a curve the number of times there are atoms in thousands of galaxies is not very useful to our current hardware limits! It turns out there is a nifty trick called binary expansion which can much reduce the problem and make it computationally trivial to solve.
+256 bits can be stored in a 32-byte hex string. Despite this, 2^256 is insanely huge. To put it into perspective, It is thought that the milky way may contain around 10^67 atoms. However this is only a fraction of the number of possible elliptic curve private keys! Clearly, in a crypto system which calculates the public key by hopping around a curve the number of times there are atoms in thousands of galaxies is not very useful to our current hardware limits! It turns out there is a nifty trick called binary expansion which can much reduce the problem and make it computationally trivial to solve.
 
 ## Sorry - but there's more!
 
