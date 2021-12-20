@@ -8,7 +8,7 @@ In this chapter, we will look at how to solve this with a data structure called 
 
 Since we are already getting ahead of ourselves, let's look at the code to do this, then break it apart. 
 
-```
+```c#
 Wordlist wordlist = new Wordlist() 
 Mnemonic mnemonic = new Mnemonic(wordlist, 12, "password123");
 Console.WriteLine(mnemonic);
