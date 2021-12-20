@@ -12,7 +12,7 @@ Largely based on Jimmy Song's *Programming Bitcoin* book, ported in C#.
 ## **Examples:**
 
 **Generate bitcoin address**
-```
+```c#
 var rand = csrng.genKey();
 PrivateKey pk = new PrivateKey(rand);
 PublicKey pubKey = pk.pubKey();
