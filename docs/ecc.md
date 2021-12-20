@@ -24,7 +24,7 @@ P + Q = R.
 
 We can also intersect at the tangent (P) then use differentiation to find the next intersection (-2P) then reflect over the x-axis to get 2P:
 
-![elliptic curve tangent](/assets/ellipticcurve2.jpg)
+![elliptic curve tangent](/assets/ellipticcurve2.jpeg)
 
 **The maths for the last diagram**
 
