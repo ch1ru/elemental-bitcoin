@@ -59,7 +59,7 @@ We Mentioned previously that a public key is a point on an elliptic curve. The p
 
 ## Sorry - but there's more!
 
-All the maths we have covered so far is all useful and correct(ish), however it's not a full cryptosystem yet. The curve is actually bounded by a prime field. All the operations we have covered do indeed take place, but within a finite field. The Secp256k1 curve equation is actually: y^2 = x^3 + 7 mod P, where P is a very large prime (2^256 - 2^32 - 977 to be exact). 
+All the maths we have covered so far is all useful and correct(ish), however it's not a full cryptosystem yet. The curve is actually bounded by a prime field. All the operations we have covered do indeed take place, but within a finite field. The equation that bitcoin uses called Secp256k1 curve equation is actually: y^2 = x^3 + 7 mod P, where P is a very large prime (2^256 - 2^32 - 977 to be exact). 
 
 This gives the curve some interesting properties. Visually, it no longer looks like a curve but a series of scattered points.
 
@@ -67,7 +67,7 @@ This gives the curve some interesting properties. Visually, it no longer looks l
 
 Interestingly, all the mathmatic identities and properties like associativity and commutavity remain unchanged. We can calculate everything as we did before but for every basic operation, it also requires a modular operation of the large prime (% P).
 
-## Finding the last missing cryptographic axiom
+## Finding the last missing group axiom
 
 
 
