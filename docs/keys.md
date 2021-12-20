@@ -11,7 +11,7 @@ So let's see how someone can generate their own bitcoin address.
 *Note: For the rest of this chapter when we say key we will refer to the private key*
 
 The code:
-```
+```c#
 var rand = csrng.genKey();
 PrivateKey pk = new PrivateKey(rand);
 PublicKey pubKey = pk.pubKey();
