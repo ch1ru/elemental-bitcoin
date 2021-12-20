@@ -80,16 +80,16 @@ A group in a cryptosystem requires at least these 4 properties:
 
 - Closure - For any x and y in the group, x * y is also in the group. This is true for elliptic curves since no matter what our scalar is (with some exceptions that we discard     in the event of the 256-bit number being higher than the order N, which is slightly smaller) the point will always stay in the field.  
 - Inverse element - For every x there is -x where both are in the group. 
-- Identity element - This is an element that provides us with an identity such that e * x = x * e = x. In a multiplicative group the identity will be 1 (a * 1 = a). In an        additive group (elliptic curves falls under this group, no multiplication remember!) you can think of the identity as being 0 (a + 0 = a). HAve a pause now to think about what the identity element could be in elliptic curves? 
+- Identity element - This is an element that provides us with an identity such that e * x = x * e = x. In a multiplicative group the identity will be 1 (a * 1 = a). In an        additive group (elliptic curves falls under this group, no multiplication remember!) you can think of the identity as being 0 (a + 0 = a). Have a pause now to think about what the identity element could be in elliptic curves? 
 
 In addition to these there is commutativity, which we mentioned previously. A group is commutative if x * y = y * x. This is easy to prove in elliptic curves; a line intersecting P and Q will produce the same result no mater the order.
 
 A group is called cyclic if there is an element, G, which spans all elements in the group (g^1, g^2, g^3 ...etc). In elliptic curves, this is also true since the base point G of the curve will span all points in the additive group (G, 2G, 3G % P).
 
-All these properties come organically within the elliptic curve cryptosystem except one: the identity element. Which point can we add to another to get its identity? There is none. To combat this, there is an imaginary point called the point at infinity which, when added to a point, will get its identity. We can visualise this by drawing a vertical line down the elliptic curve. The line will intersect at exactly 2 places. We also say it intersects at a third: the point at infinity. Following the rules we have established so far, when we add the point at infinity to P, the line intersects at one other place, at -P. Reflecting this back across the x-axis gives us P. Thus we have found our missing axiom! (albeit a slightly convuluted and perhaps uintuitive sense).
+All these properties come organically within the elliptic curve cryptosystem except one: the identity element. Which point can we add to another to get its identity? There is none (It was a trick question when I asked what the identity element could be!). To combat this, there is an imaginary point called the point at infinity which, when added to a point, will get its identity. We can visualise this by drawing a vertical line down the elliptic curve. The line will intersect at exactly 2 places. We also say it intersects at a third: the point at infinity. Following the rules we have established so far, when we add the point at infinity to P, the line intersects at one other place, at -P. Reflecting this back across the x-axis gives us P. Thus we have found our missing axiom! (albeit a slightly convuluted and perhaps uintuitive sense).
 
 
-
+## Let's summarize the whole process
 
 
 [/Intro](/index.md)|[/Install](/install.md)|[/keys](/keys.md)|[/Crypto](ecc.md)|[/Wallet](wallet.md)|[/Transactions](transactions.md)|[/Script](script.md)|[/Blocks](blocks.md)|[/Mining](/mining.md)|[/SPV](spv.md)|[/Segwit](segwit.md)
