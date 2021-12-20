@@ -23,12 +23,12 @@ Console.WriteLine(addr);
  ```
  
  **Signing a message**
- ```
+ ```c#
  byte[] message = Encoding.UTF8.GetBytes("This is an important message");
  Signature sig = pk.sign(message);
  ```
  and verify
- ```
+ ```c#
 if(pubKey.verify("This is an important message", sig)) {
 	Console.WriteLine("signature is valid");
 }
@@ -41,7 +41,7 @@ else {
 **Creating transactions**
 
 Inputs = previous txid + txindex + scriptSig (unlocking script) + sequence
-```
+```c#
 Script scriptSig = new Script();
 scriptSig.Add(sig.derEncode());
 scriptSig.Add(pubKey.getCompressed());
@@ -49,14 +49,14 @@ TxIn input = new TxIn(prevTxid, 0, scriptSig);
 ```
 
 Outputs = amount + scriptPubKey (locking script)
-```
+```c#
 byte[] hashedOutput = Hash.hash160(pubKey.getCompressed());
 Script lockingScript = Script.p2wpkh(hashedOutput);
 TxOut output = new TxOut(100000, lockingScript); //output for 100,000 satoshis
 ```
 
 Full transaction = version + inputs + outputs + locktime
-```
+```c#
 int version = 1;
 TxIn[] txins = new TxIn[] { input };
 TxOut[] txouts = new TxOut[] { output };
