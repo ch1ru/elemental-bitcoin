@@ -31,9 +31,13 @@ We can also intersect at the tangent (P) then use differentiation to find the ne
 We are trying to find the point of the next intersect (x3, y3) or -R in the diagram.
 
 Equation of curve: y^2 = x^3 + ax + b
+
 Find differentiation equation: 
+
 dy 2y = 3x^2 + a dx
+
 dy/dx 2y = 3x^2 + a
+
 dy/dx = (3x^2 + a)/2y
 
 Gradient, m = (3(p.x)^2 + a) / 2(p.y)
