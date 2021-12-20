@@ -2,9 +2,7 @@
 
 # Programming Bitcoin in C#!
 
-This tutorial is for those wishing to understand bitcoin better by coding it. To find a full list of docs see our [api docs](link).
-
-We will take a look at the fundamental building blocks that make bitcoin work, and how to start building applications for bitcoin with our simple library. 
+This tutorial is for those wishing to understand bitcoin better by coding it.=We will take a look at the fundamental building blocks that make bitcoin work, and how to start building applications for bitcoin with our simple library. 
 
 ![sherlock bitcoin meme](/assets/elementary.png)
 
