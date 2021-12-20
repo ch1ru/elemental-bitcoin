@@ -43,6 +43,7 @@ dy/dx = (3x^2 + a)/2y
 Gradient, m = (3(p.x)^2 + a) / 2(p.y)
 
 Using Fermat's little theorem, we know that: x3 = m^2 - 2(p.x), So we can calculate the x-coordinate x3
+
 We also know that y3 = (m * (p.x - x3)) - p.y, so we now know -R!
 
 We can reflect over the x-axis so negate y3.
