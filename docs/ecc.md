@@ -71,10 +71,16 @@ Interestingly, all the mathmatic identities and properties like associativity an
 
 A group in a cryptosystem requires at least these 4 properties:
 
-- Associativity - (A + B) + C = A + (B + C). This isn't immediately obvious in elliptic curves, but try visualising P + Q 
-- Closure
-- Inverse element
-- Identity element
+- Associativity - (A + B) + C = A + (B + C). This isn't immediately obvious in elliptic curves, but look at the images below. You will see that (A + B) + C is indeed the same as (B + C) + A. 
+
+(A + B) + C:
+![associativity](/assets/associative1.png)
+(B + C) + A:
+![associativity](/assets/associative2.png)
+
+- Closure - For any x and y in the group, x * y is also in the group. This is true for elliptic curves since no matter what our scalar is (with some exceptions that we discard     in the event of the 256-bit number being higher than the order N, which is slightly smaller) the point will always stay in the field.  
+- Inverse element - For every x there is -x where both are in the group. 
+- Identity element - This is an element that provides us with an identity such that e * x = x * e = x. In a multiplicative group the identity will be 1 (a * 1 = a). In an        additive group (elliptic curves falls under this group, no multiplication remember!) you can think of the identity as being 0 (a + 0 = a). HAve a pause now to think about what the identity element could be in elliptic curves? 
 
 In addition to these there is commutativity, which we mentioned previously. A group is commutative if x * y = y * x. This is easy to prove in elliptic curves; a line intersecting P and Q will produce the same result no mater the order.
 
