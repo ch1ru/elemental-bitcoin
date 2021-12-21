@@ -26,6 +26,10 @@ d04b98f48e8f8bcc15c6ae5ac050801cd6dcfd428fb5f9e65c4e16e7807340fa is an incorrect
 
 What do I mean by difficulty period? Well the difficulty can change depending on the global mining hashrate. The solution should be solved on average every 10 minutes. If more miners expend hashpower to solve the solution, the number of zeros required can increase (lowering the target range) and vice versa.
 
+Since it is random what the hash output will be and very unlikely to get a correct solution the first time (for 256 bits the probability that the next bit will be a zero is 50%. Making the solution exponentially hard). However, it is very easy to verify that the solution is correct, all we have to do is hash the block values together including the nonce to verify that was the resultant hash, and if it is below the threshhold, hurray! The miner has successfully found a solution and is rewarded with some bitcoin. 
+
+## The point of it all
+
 
 
 [/Intro](/index.md)|[/Install](/install.md)|[/keys](/keys.md)|[/Crypto](ecc.md)|[/Wallet](wallet.md)|[/Transactions](transactions.md)|[/Script](script.md)|[/Blocks](blocks.md)|[/Mining](/mining.md)|[/SPV](spv.md)|[/Segwit](segwit.md)
