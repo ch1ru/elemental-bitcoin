@@ -2,4 +2,10 @@
 
 # Mining
 
+This chapter will be about the main barrier of defense against attacks, ranging from double-spend attacks to trick merchants into giving away things for free to nationstate actors trying to take down the network through a DOS-type attack. In this chapter we will look at the main purposes of bitcoin mining and how to code some basic operations for the proof-of-work algorithm.
+
+## What 'Bitcoin mining' actually means
+
+A lot of critics of bitcoin may mistake the operation of bitcoin mining, claiming it is only an imitation of the real thing - gold mining. From the perspective of the gold bugs, mining gold has interesting incentives and characteristics that make the metal valuble as a monetary good. Firstly, gold is highly recognisable to the naked eye since it is an unreactive metal so there is no gold ore, it's usually found natively by itself. There are chemical tests using acids, and density tests using electromagnetic instruments or simply some scales and a measuring set. Depite the ease of verifying gold, it's incredibly difficult to mine it, as enourmous amounts of energy need to be expended to dig up many tonnes of earth just to find a few ounces of gold. In other words, there is an assymmetry making it hard to produce, but easy to verify when it is found. The difficulty in mining makes it suitable as a monetary metal because it means there is a very low inflation rate (new coins coming into the circulation). Unlike other goods in an economy, money will always have a high demand (people always want more money!). Therefore, to have a low issuance rate due to the natural scarcity of gold doesn't give the miners an advantage in the gold-standard economy by being able to rapidly mine more gold, which would lead to the rapid inflation of the currency. In fact, historically there has never been an annual inflation of more than 2-3% of new gold compared to existing above-ground stockpiles.
+
 [/Intro](/index.md)|[/Install](/install.md)|[/keys](/keys.md)|[/Crypto](ecc.md)|[/Wallet](wallet.md)|[/Transactions](transactions.md)|[/Script](script.md)|[/Blocks](blocks.md)|[/Mining](/mining.md)|[/SPV](spv.md)|[/Segwit](segwit.md)
