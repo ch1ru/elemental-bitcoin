@@ -30,6 +30,8 @@ Since it is random what the hash output will be and very unlikely to get a corre
 
 ## The point of it all
 
+The proof-of-work algorithm gives cryptographic proof of the energy expenditure in hashrate of the bitcoin miners. This is important since it means the miners who are verifying transactions have "Skin in the game". Let's say that the mining reward for verifying transactions is given out randomly without miners having to expend the energy. If miners try to cheat by adding false transactions, they may get caught by the honest miners. However there is no punishment for proposing an incorrect solution. In a proof-of-work system that requires a lot of expenditure of power, the non-zero cost of electricity ensures an implicit loss to miners who expend the energy but are subsequently penalised for dishonesty. Also image if someone were to falsify the transaction history, it would be all too easy to remine blocks if the difficulty algorithm was too easy. For each new block that is mined, it becomes exponentially more difficult for an attacker to modify a transaction in a previous block (invalidating the block hash and all subsequent block hashes). An attacker would have to remine the block and future blocks, which we assume is a hard problem (at 6 confirmations it is virtually inconceivable that even a state actor with lots of resources could invalidate the transaction).
+
 
 
 [/Intro](/index.md)|[/Install](/install.md)|[/keys](/keys.md)|[/Crypto](ecc.md)|[/Wallet](wallet.md)|[/Transactions](transactions.md)|[/Script](script.md)|[/Blocks](blocks.md)|[/Mining](/mining.md)|[/SPV](spv.md)|[/Segwit](segwit.md)
