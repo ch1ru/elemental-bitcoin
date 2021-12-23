@@ -8,7 +8,7 @@ This chapter will be about the maths behind bitcoin keys and signing. Feel free 
 
 An elliptic curve is any curve with the general formula:
 
-y² = ax³+ax+b
+y² = ax³ + ax + b
 
 For example, Bitcoin uses the curve equation y^2 = x^3 + 7 which is defined in NIST's list of secure elliptic curves. An interesting property of elliptic curves is that they display intuitive properties we see in standard maths, namely: associativity and commutativity.
 
