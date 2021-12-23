@@ -68,7 +68,7 @@ Transaction tx = new Transaction(version, txins, txouts, locktime);
 
 See our beginner's [Tutorial](https://ch1ru.github.io/elementary-bitcoin/) 
 
-## NUGET package
+## Install with NUGET Packet Manager
 
 No NUGET package as of yet, on it's way.
 
