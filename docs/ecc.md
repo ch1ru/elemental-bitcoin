@@ -59,7 +59,7 @@ We Mentioned previously that a public key is a point on an elliptic curve. The p
 
 ## Elliptic curves within finite fields
 
-All the maths we have covered so far is all useful and correct(ish), however it's not a full cryptosystem yet. The curve is actually bounded by a finite field. All the operations we have covered do indeed take place, but within a prime field. The equation that bitcoin uses is called Secp256k1, its equation is actually: y^2 = x^3 + 7 mod P, where P is a very large prime (2^256 - 2^32 - 977 to be exact). 
+All the maths we have covered so far is all useful and correct(ish), however it's not a full cryptosystem yet. The curve is actually bounded by a finite field. All the operations we have covered do indeed take place, but within a prime field. The equation that bitcoin uses is called Secp256k1, its equation is actually: y^2 = x³ + 7 mod P, where P is a very large prime (2^256 - 2^32 - 977 to be exact). 
 
 This gives the curve some interesting properties. Visually, it no longer looks like a curve but a series of scattered points.
 
@@ -85,19 +85,19 @@ A group in a cryptosystem requires at least these 4 properties:
 
 In addition to these there is commutativity, which we mentioned previously. A group is commutative if x * y = y * x. This is easy to prove in elliptic curves; a line intersecting P and Q will produce the same result no mater the order.
 
-A group is called cyclic if there is an element, G, which spans all elements in the group (g^1, g², g^3 ...etc). In elliptic curves, this is also true since the base point G of the curve will span all points in the additive group (G, 2G, 3G % P).
+A group is called cyclic if there is an element, G, which spans all elements in the group (g, g², g³ ...etc). In elliptic curves, this is also true since the base point G of the curve will span all points in the additive group (G, 2G, 3G % P).
 
 All these properties come organically within the elliptic curve cryptosystem except one: the identity element. Which point can we add to another to get its identity? There is none (It was a trick question when I asked what the identity element could be!). To combat this, there is an imaginary point called the point at infinity which, when added to a point, will get its identity. We can visualise this by drawing a vertical line down the elliptic curve. The line will intersect at exactly 2 places. We also say it intersects at a third: the point at infinity. Following the rules we have established so far, when we add the point at infinity to P, the line intersects at one other place, at -P. Reflecting this back across the x-axis gives us P. Thus we have found our missing axiom! (albeit a slightly convuluted and perhaps uintuitive sense).
 
 ## What is the public key?
 
-The public key is the coordinate resulting from the base point, G, multiplied by the private key. So the public key can be the x and y coordinate in hex. However, these values are 32-bytes each which makes storing the public key as 64 bytes a pain. Instead, we can just store the x-coordinate, since we know the equation and can derive y. However, the definition we have for y is y² = x^3 + 7 mod P. By square-rooting both sides we can find one solution for y. But don't forget, a negative value of y would also yield the same when squared, so we have to find the other solution for y. How do we do this?
+The public key is the coordinate resulting from the base point, G, multiplied by the private key. So the public key can be the x and y coordinate in hex. However, these values are 32-bytes each which makes storing the public key as 64 bytes a pain. Instead, we can just store the x-coordinate, since we know the equation and can derive y. However, the definition we have for y is y² = x³ + 7 mod P. By square-rooting both sides we can find one solution for y. But don't forget, a negative value of y would also yield the same when squared, so we have to find the other solution for y. How do we do this?
 
-Let's start with what we know: there are 2 solutions for y, one above the x-axis and one below. The equation of the curve has a modulo function either side: y % P = sqrt+/-(x^3 + 7) % P. A correct solution would be (x,y) or (x,-y) that satisfies this equation.
+Let's start with what we know: there are 2 solutions for y, one above the x-axis and one below. The equation of the curve has a modulo function either side: y % P = sqrt+/-(x³ + 7) % P. A correct solution would be (x,y) or (x,-y) that satisfies this equation.
 
 We also know know from Fermat's little theorem that -y % P = (P - y) % P. 
 
-Since we know the prime number is odd, and we know one value for y by solving the above equation (y % P = sqrt+/-(x^3 + 7) % P). If y is even, then we know that P-y is odd. If y is odd then P-y is even. 
+Since we know the prime number is odd, and we know one value for y by solving the above equation (y % P = sqrt+/-(x³ + 7) % P). If y is even, then we know that P-y is odd. If y is odd then P-y is even. 
 
 So our public key becomes:
 /[0x02/0x03 even/odd of y]/[32-byte x]
@@ -112,7 +112,7 @@ If you didn't get some of the maths, not to worry! this summary will provide you
 **Key generation:**
 - Create a 256-bit value from random entropy
 - Multiply a known point, G, by this scalar to get the public key point
-- The exquation of the curve is y² = x^3 + 7 mod P, where P is a large prime number
+- The exquation of the curve is y² = x³ + 7 mod P, where P is a large prime number
 - All calculations are done within the prime field of P
 - Binary expansion is used for fast exponentiation (G -> 2G -> 4G etc uses O(n) time)
 - The public key is the coordinate, although only the x-coordinate needs to be stored plus one byte if y is even (0x02) or odd (0x03)
