@@ -10,7 +10,7 @@ An elliptic curve is any curve with the general formula:
 
 y² = ax³ + ax + b
 
-For example, Bitcoin uses the curve equation y^2 = x^3 + 7 which is defined in NIST's list of secure elliptic curves. An interesting property of elliptic curves is that they display intuitive properties we see in standard maths, namely: associativity and commutativity.
+For example, Bitcoin uses the curve equation y² = x³ + 7 which is defined in NIST's list of secure elliptic curves. An interesting property of elliptic curves is that they display intuitive properties we see in standard maths, namely: associativity and commutativity.
 
 If an elliptic curve is intersected by a straight line, unless is some exceptions, it will intersect at 3 points, such that: 
 
@@ -30,19 +30,19 @@ We can also intersect at the tangent (P) then use differentiation to find the ne
 
 We are trying to find the point of the next intersect (x3, y3) or -R in the diagram.
 ```
-Equation of curve: y^2 = x^3 + ax + b
+Equation of curve: y² = ax³ + ax + b
 
 Find differentiation equation: 
 
-dy 2y = 3x^2 + a dx
+dy 2y = 3x² + a dx
 
-dy/dx 2y = 3x^2 + a
+dy/dx 2y = 3x² + a
 
-dy/dx = (3x^2 + a)/2y
+dy/dx = (3x² + a)/2y
 
-Gradient, m = (3(p.x)^2 + a) / 2(p.y)
+Gradient, m = (3(p.x)² + a) / 2(p.y)
 
-Using Fermat's little theorem, we know that: x3 = m^2 - 2(p.x), So we can calculate the x-coordinate x3
+Using Fermat's little theorem, we know that: x3 = m² - 2(p.x), So we can calculate the x-coordinate x3
 
 We also know that y3 = (m * (p.x - x3)) - p.y, so we now know -R!
 
@@ -85,13 +85,13 @@ A group in a cryptosystem requires at least these 4 properties:
 
 In addition to these there is commutativity, which we mentioned previously. A group is commutative if x * y = y * x. This is easy to prove in elliptic curves; a line intersecting P and Q will produce the same result no mater the order.
 
-A group is called cyclic if there is an element, G, which spans all elements in the group (g^1, g^2, g^3 ...etc). In elliptic curves, this is also true since the base point G of the curve will span all points in the additive group (G, 2G, 3G % P).
+A group is called cyclic if there is an element, G, which spans all elements in the group (g^1, g², g^3 ...etc). In elliptic curves, this is also true since the base point G of the curve will span all points in the additive group (G, 2G, 3G % P).
 
 All these properties come organically within the elliptic curve cryptosystem except one: the identity element. Which point can we add to another to get its identity? There is none (It was a trick question when I asked what the identity element could be!). To combat this, there is an imaginary point called the point at infinity which, when added to a point, will get its identity. We can visualise this by drawing a vertical line down the elliptic curve. The line will intersect at exactly 2 places. We also say it intersects at a third: the point at infinity. Following the rules we have established so far, when we add the point at infinity to P, the line intersects at one other place, at -P. Reflecting this back across the x-axis gives us P. Thus we have found our missing axiom! (albeit a slightly convuluted and perhaps uintuitive sense).
 
 ## What is the public key?
 
-The public key is the coordinate resulting from the base point, G, multiplied by the private key. So the public key can be the x and y coordinate in hex. However, these values are 32-bytes each which makes storing the public key as 64 bytes a pain. Instead, we can just store the x-coordinate, since we know the equation and can derive y. However, the definition we have for y is y^2 = x^3 + 7 mod P. By square-rooting both sides we can find one solution for y. But don't forget, a negative value of y would also yield the same when squared, so we have to find the other solution for y. How do we do this?
+The public key is the coordinate resulting from the base point, G, multiplied by the private key. So the public key can be the x and y coordinate in hex. However, these values are 32-bytes each which makes storing the public key as 64 bytes a pain. Instead, we can just store the x-coordinate, since we know the equation and can derive y. However, the definition we have for y is y² = x^3 + 7 mod P. By square-rooting both sides we can find one solution for y. But don't forget, a negative value of y would also yield the same when squared, so we have to find the other solution for y. How do we do this?
 
 Let's start with what we know: there are 2 solutions for y, one above the x-axis and one below. The equation of the curve has a modulo function either side: y % P = sqrt+/-(x^3 + 7) % P. A correct solution would be (x,y) or (x,-y) that satisfies this equation.
 
@@ -112,7 +112,7 @@ If you didn't get some of the maths, not to worry! this summary will provide you
 **Key generation:**
 - Create a 256-bit value from random entropy
 - Multiply a known point, G, by this scalar to get the public key point
-- The exquation of the curve is y^2 = x^3 + 7 mod P, where P is a large prime number
+- The exquation of the curve is y² = x^3 + 7 mod P, where P is a large prime number
 - All calculations are done within the prime field of P
 - Binary expansion is used for fast exponentiation (G -> 2G -> 4G etc uses O(n) time)
 - The public key is the coordinate, although only the x-coordinate needs to be stored plus one byte if y is even (0x02) or odd (0x03)
