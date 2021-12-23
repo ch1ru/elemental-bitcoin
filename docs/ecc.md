@@ -8,7 +8,7 @@ This chapter will be about the maths behind bitcoin keys and signing. Feel free 
 
 An elliptic curve is any curve with the general formula:
 
-y^2 = ax^3 + ax + b
+y²=ax³+ax+b
 
 For example, Bitcoin uses the curve equation y^2 = x^3 + 7 which is defined in NIST's list of secure elliptic curves. An interesting property of elliptic curves is that they display intuitive properties we see in standard maths, namely: associativity and commutativity.
 
@@ -93,7 +93,7 @@ All these properties come organically within the elliptic curve cryptosystem exc
 
 The public key is the coordinate resulting from the base point, G, multiplied by the private key. So the public key can be the x and y coordinate in hex. However, these values are 32-bytes each which makes storing the public key as 64 bytes a pain. Instead, we can just store the x-coordinate, since we know the equation and can derive y. However, the definition we have for y is y^2 = x^3 + 7 mod P. By square-rooting both sides we can find one solution for y. But don't forget, a negative value of y would also yield the same when squared, so we have to find the other solution for y. How do we do this?
 
-Let's start with what we know: there are 2 solutions, one above the x-axis and one below. The equation has a modulo function either side: y % P = sqrt+/-(x^3 + 7) % P. A correct solution would be (x,y) or (x,-y) that satisfies this equation.
+Let's start with what we know: there are 2 solutions for y, one above the x-axis and one below. The equation of the curve has a modulo function either side: y % P = sqrt+/-(x^3 + 7) % P. A correct solution would be (x,y) or (x,-y) that satisfies this equation.
 
 We also know know from Fermat's little theorem that -y % P = (P - y) % P. 
 
