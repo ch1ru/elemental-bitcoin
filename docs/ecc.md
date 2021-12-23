@@ -89,10 +89,36 @@ A group is called cyclic if there is an element, G, which spans all elements in 
 
 All these properties come organically within the elliptic curve cryptosystem except one: the identity element. Which point can we add to another to get its identity? There is none (It was a trick question when I asked what the identity element could be!). To combat this, there is an imaginary point called the point at infinity which, when added to a point, will get its identity. We can visualise this by drawing a vertical line down the elliptic curve. The line will intersect at exactly 2 places. We also say it intersects at a third: the point at infinity. Following the rules we have established so far, when we add the point at infinity to P, the line intersects at one other place, at -P. Reflecting this back across the x-axis gives us P. Thus we have found our missing axiom! (albeit a slightly convuluted and perhaps uintuitive sense).
 
+## What is the public key?
+
+The public key is the coordinate resulting from the base point, G, multiplied by the private key. So the public key can be the x and y coordinate in hex. However, these values are 32-bytes each which makes storing the public key as 64 bytes a pain. Instead, we can just store the x-coordinate, since we know the equation and can derive y. However, the definition we have for y is y^2 = x^3 + 7 mod P. By square-rooting both sides we can find one solution for y. But don't forget, a negative value of y would also yield the same when squared, so we have to find the other solution for y. How do we do this?
+
+Let's start with what we know: there are 2 solutions, one above the x-axis and one below. The equation has a modulo function either side: y % P = sqrt+/-(x^3 + 7) % P. A correct solution would be (x,y) or (x,-y) that satisfies this equation.
+
+We also know know from Fermat's little theorem that -y % P = (P - y) % P. 
+
+Since we know the prime number is odd, and we know one value for y by solving the above equation (y % P = sqrt+/-(x^3 + 7) % P). If y is even, then we know that P-y is odd. If y is odd then P-y is even. 
+
+So our public key becomes:
+/[0x02/0x03 even/odd of y]/[32-byte x]
+even = 0x02, odd= 0x03
+
+Using this format called SEC compressed, we can tell which solution we are using for y with only one extra byte!
 
 ## Let's summarize the whole process
 
-If you didn't get some of the maths, not to worry! this summary will provide you with the most important points. The rest of this chapter will not require a deeper understanding than the basic concept of public key cryptography with signing and verification.
+If you didn't get some of the maths, not to worry! this summary will provide you with the most important points. The rest of this tutorial will not require a deeper understanding than the basic concept of public key cryptography with signing and verification.
+
+**Key generation:**
+- Create a 256-bit value from random entropy
+- Multiply a known point, G, by this scalar to get the public key point
+- The exquation of the curve is y^2 = x^3 + 7 mod P, where P is a large prime number
+- All calculations are done within the prime field of P
+- Binary expansion is used for fast exponentiation (G -> 2G -> 4G etc uses O(n) time)
+- The public key is the coordinate, although only the x-coordinate needs to be stored plus one byte if y is even (0x02) or odd (0x03)
+
+**Signing:**
+
 
 
 [/Intro](/index.md)|[/Install](/install.md)|[/keys](/keys.md)|[/Crypto](ecc.md)|[/Wallet](wallet.md)|[/Transactions](transactions.md)|[/Script](script.md)|[/Blocks](blocks.md)|[/Mining](/mining.md)|[/SPV](spv.md)|[/Segwit](segwit.md)
