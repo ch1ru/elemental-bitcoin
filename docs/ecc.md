@@ -71,7 +71,7 @@ Interestingly, all the mathmatic identities and properties like associativity an
 
 A group in a cryptosystem requires at least these 4 properties:
 
-- Associativity - (A + B) + C = A + (B + C). This isn't immediately obvious in elliptic curves, but look at the images below. You will see that (A + B) + C is indeed the same as (B + C) + A. 
+- Associativity - (A + B) + C ≡ A + (B + C). This isn't immediately obvious in elliptic curves, but look at the images below. You will see that (A + B) + C is indeed the same as (B + C) + A. 
 
 (A + B) + C:
 ![associativity](/assets/associative1.png)
@@ -81,9 +81,9 @@ A group in a cryptosystem requires at least these 4 properties:
 
 - Closure - For any x and y in the group, x * y is also in the group. This is true for elliptic curves since no matter what our scalar is (with some exceptions that we discard     in the event of the 256-bit number being higher than the order N, which is slightly smaller) the point will always stay in the field.  
 - Inverse element - For every x there is -x where both are in the group. 
-- Identity element - This is an element that provides us with an identity such that e * x = x * e = x. In a multiplicative group the identity will be 1 (a * 1 = a). In an        additive group (elliptic curves falls under this group, no multiplication remember!) you can think of the identity as being 0 (a + 0 = a). Have a pause now to think about what the identity element could be in elliptic curves? 
+- Identity element - This is an element that provides us with an identity such that e * x ≡ x * e ≡ x. In a multiplicative group the identity will be 1 (a * 1 = a). In an        additive group (elliptic curves falls under this group, no multiplication remember!) you can think of the identity as being 0 (a + 0 = a). Have a pause now to think about what the identity element could be in elliptic curves? 
 
-In addition to these there is commutativity, which we mentioned previously. A group is commutative if x * y = y * x. This is easy to prove in elliptic curves; a line intersecting P and Q will produce the same result no mater the order.
+In addition to these there is commutativity, which we mentioned previously. A group is commutative if x * y ≡ y * x. This is easy to prove in elliptic curves; a line intersecting P and Q will produce the same result no mater the order.
 
 A group is called cyclic if there is an element, G, which spans all elements in the group (g, g², g³ ...etc). In elliptic curves, this is also true since the base point G of the curve will span all points in the additive group (G, 2G, 3G % P).
 
@@ -93,11 +93,13 @@ All these properties come organically within the elliptic curve cryptosystem exc
 
 The public key is the coordinate resulting from the base point, G, multiplied by the private key. So the public key can be the x and y coordinate in hex. However, these values are 32-bytes each which makes storing the public key as 64 bytes a pain. Instead, we can just store the x-coordinate, since we know the equation and can derive y. However, the definition we have for y is y² = x³ + 7 mod P. By square-rooting both sides we can find one solution for y. But don't forget, a negative value of y would also yield the same when squared, so we have to find the other solution for y. How do we do this?
 
-Let's start with what we know: there are 2 solutions for y, one above the x-axis and one below. The equation of the curve has a modulo function either side: y % P = sqrt+/-(x³ + 7) % P. A correct solution would be (x,y) or (x,-y) that satisfies this equation.
+Let's start with what we know: there are 2 solutions for y, one above the x-axis and one below. 
 
-We also know know from Fermat's little theorem that -y % P = (P - y) % P. 
+The equation of the curve has a modulo function either side: y % P = +/-√(x³ + 7) % P. A correct solution would be (x,y) or (x,-y) that satisfies this equation.
 
-Since we know the prime number is odd, and we know one value for y by solving the above equation (y % P = sqrt+/-(x³ + 7) % P). If y is even, then we know that P-y is odd. If y is odd then P-y is even. 
+We also know know from Fermat's little theorem that -y % P ≡ (P - y) % P. 
+
+Since we know the prime number is odd, and we know one value for y by solving the above equation (y % P = +/-√(x³ + 7) % P). If y is even, then we know that P-y is odd. If y is odd then P-y is even. 
 
 So our public key becomes:
 /[0x02/0x03 even/odd of y]/[32-byte x]
