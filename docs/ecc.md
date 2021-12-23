@@ -91,7 +91,7 @@ All these properties come organically within the elliptic curve cryptosystem exc
 
 ## What is the public key?
 
-The public key is the coordinate resulting from the base point, G, multiplied by the private key. So the public key can be the x and y coordinate in hex. However, these values are 32-bytes each which makes storing the public key as 64 bytes a pain. Instead, we can just store the x-coordinate, since we know the equation and can derive y. However, the definition we have for y is y² = x³ + 7 mod P. By square-rooting both sides we can find one solution for y. But don't forget, a negative value of y would also yield the same when squared, so we have to find the other solution for y. How do we do this?
+The public key is the coordinate resulting from the base point, G, multiplied by the private key. So the public key can be the x and y coordinate in hex. However, these values are 32-bytes each which makes storing the public key as 64 bytes a pain. Instead, we can just store the x-coordinate, since we know the equation and can derive y. However, the definition we have for y is y² = x³ + 7 (mod P). By square-rooting both sides we can find one solution for y. But don't forget, a negative value of y would also yield the same when squared, so we have to find the negative solution. How do we do this?
 
 Let's start with what we know: there are 2 solutions for y, one above the x-axis and one below. 
 
@@ -99,12 +99,14 @@ The equation of the curve has a modulo function either side: y % P = +/-√(x³ 
 
 We also know know from Fermat's little theorem that -y % P ≡ (P - y) % P. 
 
-Since we know the prime number is odd, and we know one value for y by solving the above equation (y % P = +/-√(x³ + 7) % P). If y is even, then we know that P-y is odd. If y is odd then P-y is even. 
+Since we know the prime number is odd, and we know one value for y by solving the above equation (y % P = +/-√(x³ + 7) % P). If y is even, then we know that P-y is odd. If y is odd then P-y is even. So all we need to know is what solution of y we have, whether is it even or odd.
 
 So our public key becomes:
 [1 byte eveness of y][32-byte x]
 
 even = 0x02, odd= 0x03
+
+Example: 02b4632d08485ff1df2db55b9dafd23347d1c47a457072a1e87be26896549a8737
 
 Using this format called SEC compressed, we can tell which solution we are using for y with only one extra byte!
 
