@@ -102,7 +102,7 @@ We also know know from Fermat's little theorem that -y % P ≡ (P - y) % P.
 Since we know the prime number is odd, and we know one value for y by solving the above equation (y % P = +/-√(x³ + 7) % P). If y is even, then we know that P-y is odd. If y is odd then P-y is even. 
 
 So our public key becomes:
-/[0x02/0x03 even/odd of y]/[32-byte x]
+[0x02/0x03 even/odd of y][32-byte x]
 even = 0x02, odd= 0x03
 
 Using this format called SEC compressed, we can tell which solution we are using for y with only one extra byte!
