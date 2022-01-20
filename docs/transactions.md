@@ -158,6 +158,30 @@ Console.WriteLine(recipienttx);
 0100000001a47f21fe4270a4d8d9852f47ec68817085a7563cdad601ce2cd0a205cf442cd6010000006b483045022100f5386ba7fb3562a729b225be9474ad8abac10929c07c8c779bdb27ddf7d64ba90220244fe1e912481a1711a5a048b59b73a4c3961121edf040b81152c7729b6507dd0121035ca5c197fb8646d4871d7e930a1b7085f9406c44532fecfb3964d7f70d7c4bb3ffffffff0120a10700000000001976a91462553965c1281126fea27ad85bb006d4d6de618b88ac00000000
 ```
 
+Let's break that down:
+
+```c#
+/*
+//version
+010000000
+//txid
+1a47f21fe4270a4d8d9852f47ec68817085a7563cdad601ce2cd0a205cf442cd6
+//vout (index)
+01000000
+//scriptsig
+6b483045022100f5386ba7fb3562a729b225be9474ad8abac10929c07c8c779bdb27ddf7d64ba90220244fe1e912481a1711a5a048b59b73a4c3961121edf040b81152c7729b6507dd0121035ca5c197fb8646d4871d7e930a1b7085f9406c44532fecfb3964d7f70d7c4bb3
+//sequence
+ffffffff
+//amount in sats 490,000
+0120a10700000000
+//scriptpubkey
+001976a91462553965c1281126fea27ad85bb006d4d6de618b88ac
+//locktime
+00000000
+*/
+```
+**Note: Some fields are in serialized little endian format (reverse byte order)**
+
 Congratulations, you've created your first bitcoin transaction! All you need to do is broadcast the raw transaction. This can be done using Samourai wallet's tx broadcaster, or any number of websites offer the same thing. If you have a bitcoin node running on testnet, you can use the rpc command: sendrawtransaction <hexstring>.
   
 **Note: This guide only explains how to construct a legacy transaction. If you want to know how to construct a segwit transaction, which is slightly different process, this [article] explains how to do it**.
