@@ -120,11 +120,11 @@ TxOut output = new TxOut(490000, Script.p2pkh(sendaddr.getHash(segwit: true, typ
 Transaction recipienttx = new Transaction(version: 1, new TxIn[] { input }, new TxOut[] { output }, 0, testnet: true, segwit: false);  
 ```
 
-## Important input fields:
+## Input fields:
 - Transaction ID ```selftx.getHash()```
 - Transaction index of 1.
 
-## Important output fields:
+## Output fields:
 - The amount of 490,000 sats. This is slightly less than the 500,000 we send. The remaining difference will be a fee for the miners.
 - The address we are sending the bitcoin to, a freshly generated address by our wallet.
 - The encumberance or scriptpubkey. This mostly consists of the hash of the public key (which we derive from our address).
