@@ -77,7 +77,7 @@ To get testnet bitcoin you can visit a faucet such as [add faucet address]. You'
 
 Next, let's create a testnet address and the corresponding private key:
 
-```
+```c#
 var rand = csrng.genKey();
 PrivateKey pk = new PrivateKey(rand);
 PublicKey pubKey = pk.pubKey();
@@ -88,6 +88,79 @@ Console.WriteLine(pk);
 //tb1qh2a3uw97qnqxastzru00p70glx368djlq0n8x3
 //L1vkcXRfeY3g6gPdWXvFyiPjLUzjuD9s26Nv7EaRE7C9JEPuxoJk
 ```
+
+**Important!:**
+Make note of the address and private key (notice it's in WIF format). 
+
+Now send some tetnet bitcoin to the address we generated. Our challenge will be to contruct a transaction that will send the bitcoin back to our wallet.
+
+The next step is to check the transaction has been confirmed. We'll use https://testnet.bitcoinexplorer.org/. copy the addresss in the search bar and you should see something like this:
+
+![image](https://github.com/ch1ru/elementary-bitcoin/blob/main/docs/assets/explorer.png)
+
+Copy the transaction id (this will be used as our input). However we also need to specify the exact output we will use for our input. Not that in our transaction there are 2 outputs, one being the address we specified, the other being the change address. Pick the one that matches your generated address (the other output is controlled by the wallet). In our case this is output 1.
+
+Let's fetch this transaction:
+
+```c#
+Transaction selftx = txFetcher.fetch("d62c44cf05a2d02cce01d6da3c56a785708168ec472f85d9d8a47042fe217fa4", testnet: true);
+selftx.getData(); //this will print information about the transaction to console
+```
+
+Now lets construct our own transaction:
+
+```c#
+//creates an input using the transaction ID and index
+TxIn input = new TxIn(selftx.getHash(), 1); 
+//specify the bitcoin address we want to send funds to
+BitcoinAddress sendaddr = new BitcoinAddress("tb1qvf2njewp9qgjdl4z0tv9hvqx6ntducvtqddy7m"); 
+//create an output of 500,000 sats and add an encumberance (scriptpubkey)
+TxOut output = new TxOut(490000, Script.p2pkh(sendaddr.getHash(segwit: true, type: 0, testnet: true))); 
+//instanstiate a transaction using the version, inputs and outputs, locktime of 0. This will be a legacy transaction (not segwit) and on the test network
+Transaction recipienttx = new Transaction(version: 1, new TxIn[] { input }, new TxOut[] { output }, 0, testnet: true, segwit: false);  
+```
+
+## Important input fields:
+- Transaction ID ```selftx.getHash()```
+- Transaction index of 1.
+
+## Important output fields:
+- The amount of 490,000 sats. This is slightly less than the 500,000 we send. The remaining difference will be a fee for the miners.
+- The address we are sending the bitcoin to, a freshly generated address by our wallet.
+- The encumberance or scriptpubkey. This mostly consists of the hash of the public key (which we derive from our address).
+
+## Why did we add an encumberance?
+
+This may seem obvious but is worth explaining. We are sending the bitcoin back to an address that we control, but we need to prevent others from spending the funds in the future. In other words, only those with the private key (us) can create a valid signed transaction to spend the funds. Therefore we tie the output to a hash of the public key. The script pubkey allows us to do that. We will look more closely at the scriptpubkey in the [scripts] chapter. For now just be aware it contains the hash of the public key (or a hash of a script specifying spending conditions, but more on this later).
+
+We are almost finishing contructing our transaction, however we still haven't signed the inputs, proving we can move the funds. Let's do this now:
+
+```c#
+if(!recipienttx.signInput(0, pk)) {
+  Console.WriteLine("Invalid signature"); //check if our signature is valid
+}
+recipienttx.getData();
+```
+
+There is only 1 input in our transaction (remember this is the new transaction we created, don't get confused between this one and the transaction we already broadcasted). If there were multiple inputs, we would need to sign each one.
+
+Let's also add a message to our transaction. OP_Return is an 80 bytes field that can be used to add custom messages to a transaction.
+
+```c#
+recipienttx.AddMessage("Money printer go brrr");
+```
+
+Finally, let's print out the serialized transaction in hex format:
+
+```c#
+Console.WriteLine(recipienttx);
+
+0100000001a47f21fe4270a4d8d9852f47ec68817085a7563cdad601ce2cd0a205cf442cd6010000006b483045022100f5386ba7fb3562a729b225be9474ad8abac10929c07c8c779bdb27ddf7d64ba90220244fe1e912481a1711a5a048b59b73a4c3961121edf040b81152c7729b6507dd0121035ca5c197fb8646d4871d7e930a1b7085f9406c44532fecfb3964d7f70d7c4bb3ffffffff0120a10700000000001976a91462553965c1281126fea27ad85bb006d4d6de618b88ac00000000
+```
+
+Congratulations, you've created your first bitcoin transaction! All you need to do is broadcast the raw transaction. This can be done using Samourai wallet's tx broadcaster, or any number of websites offer the same thing. If you have a bitcoin node running on testnet, you can use the rpc command: sendrawtransaction <hexstring>.
+  
+**Note: This guide only explains how to construct a legacy transaction. If you want to know how to construct a segwit transaction, which is slightly different process, this [article] explains how to do it**.
 
 [/Intro](/index.md)|[/Install](/install.md)|[/keys](/keys.md)|[/Crypto](ecc.md)|[/Wallet](wallet.md)|[/Transactions](transactions.md)|[/Script](script.md)|[/Blocks](blocks.md)|[/Mining](/mining.md)|[/SPV](spv.md)|[/Segwit](segwit.md)
 
