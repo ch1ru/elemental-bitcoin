@@ -191,7 +191,7 @@ ffffffff
 
 Congratulations, you've created your first bitcoin transaction! All you need to do is broadcast the raw transaction. This can be done using Samourai wallet's tx broadcaster, or any number of websites offer the same thing. If you have a bitcoin node running on testnet, you can use the rpc command: sendrawtransaction "hexstring".
   
-**Note: This guide only explains how to construct a legacy transaction. If you want to know how to construct a segwit transaction, which is slightly different process, this [article] explains how to do it**.
+**Note: This guide only explains how to construct a legacy transaction. If you want to know how to construct a segwit transaction, which has a slightly different format (albeit largely the same process), this [article] explains how to do it**.
 
 [/Intro](/index.md)|[/Install](/install.md)|[/keys](/keys.md)|[/Crypto](ecc.md)|[/Wallet](wallet.md)|[/Transactions](transactions.md)|[/Script](script.md)|[/Blocks](blocks.md)|[/Mining](/mining.md)|[/SPV](spv.md)|[/Segwit](segwit.md)
 
