@@ -189,7 +189,7 @@ ffffffff
 ```
 **Note: Some fields are in serialized little endian format (reverse byte order)**
 
-Congratulations, you've created your first bitcoin transaction! All you need to do is broadcast the raw transaction. This can be done using Samourai wallet's tx broadcaster, or any number of websites offer the same thing. If you have a bitcoin node running on testnet, you can use the rpc command: sendrawtransaction <hexstring>.
+Congratulations, you've created your first bitcoin transaction! All you need to do is broadcast the raw transaction. This can be done using Samourai wallet's tx broadcaster, or any number of websites offer the same thing. If you have a bitcoin node running on testnet, you can use the rpc command: sendrawtransaction "hexstring".
   
 **Note: This guide only explains how to construct a legacy transaction. If you want to know how to construct a segwit transaction, which is slightly different process, this [article] explains how to do it**.
 
