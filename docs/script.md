@@ -244,14 +244,14 @@ OP_Equal
 Let's execute it on the stack:
 
 Add OP_0:
-```c#
+```
 Stack         Current command
 OP_0        | Add null byte
 ---------------------
 ```
 
 Add \<sig1\>:
-```c#
+```
 Stack         Current command
 \<sig1\>    | Add first signature
 OP_0        | 
@@ -259,7 +259,7 @@ OP_0        |
 ```
 
 Add \<sig2\>:
-```c#
+```
 Stack         Current command
 \<sig2\>    | Add second signature
 \<sig1\>    | 
@@ -268,7 +268,7 @@ OP_0        |
 ```
 
 Add redeem script:
-```c#
+```
 Stack          Current command
 redeem script| \<redeem script\>
 \<sig2\>     | 
@@ -278,7 +278,7 @@ OP_0         |
 ```
 
 Hash the top element:
-```c#
+```
 Stack          Current command
 script hash  | OP_Hash160
 \<sig2\>     | 
@@ -288,7 +288,7 @@ OP_0         |
 ```
 
 Add script hash:
-```c#
+```
 Stack          Current command
 script hash  | \<script hash\>
 script hash  | 
@@ -299,7 +299,7 @@ OP_0         |
 ```
 
 Check top elements are equal, 1 if true:
-```c#
+```
 Stack          Current command
 1            | OP_Equal
 \<sig2\>     | 
