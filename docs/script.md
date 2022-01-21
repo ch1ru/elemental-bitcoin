@@ -213,5 +213,118 @@ scriptpubkey.Add(opcodes.OP_HASH160);
 scriptpubkey.Add(scriptHash);
 scriptpubkey.Add(opcodes.OP_EQUAL);
 ```
+When we send bitcoin to the corresponding address with this hash, it will be locked with a multisig contract. Providing 2/3 keys is needed to spend the funds.
+
+In the pay-to-pubkey script type, we have to provide the public key, since it's not possible to reverse the hash to return to the public key. In a similar way, we need to provide the redeem script corresponding to the script hash in our scriptsig. Let's create this now:
+
+```c#
+fixme: show how to get signatures
+Script scriptsig = new Script();
+scriptsig.Add(opcodes.OP_0);
+scriptsig.Add(sig1.DerEncode());
+scriptsig.Add(sig2.DerEncode());
+redeemScript.Serialise();
+```
+
+You may be wondering why we add the OP_0 opcode at the start? This is because of an overflow bug in the checkmultisig operation that consumes one more element than it should. This has existed since the very first multisig transaction but went unnoticed. At this point, it would require a hardfork to fix, which is why we just add a null byte instead.
+
+
+## Putting it all together
+
+Let's walk through how a p2sh transaction is processed on the stack. Our combined script now looks something like this:
+
+OP_0
+\<sig1\>
+\<sig2\>
+Redeem script
+OP_Hash160
+\<script hash\>
+OP_Equal
+
+Let's execute it on the stack:
+
+Add OP_0:
+```c#
+Stack         Current command
+OP_0        | Add null byte
+---------------------
+```
+
+Add \<sig1\>:
+```c#
+Stack         Current command
+\<sig1\>    | Add first signature
+OP_0        | 
+---------------------
+```
+
+Add \<sig2\>:
+```c#
+Stack         Current command
+\<sig2\>    | Add second signature
+\<sig1\>    | 
+OP_0        | 
+---------------------
+```
+
+Add redeem script:
+```c#
+Stack          Current command
+redeem script| \<redeem script\>
+\<sig2\>     | 
+\<sig1\>     | 
+OP_0         | 
+---------------------
+```
+
+Hash the top element:
+```c#
+Stack          Current command
+script hash  | OP_Hash160
+\<sig2\>     | 
+\<sig1\>     | 
+OP_0         | 
+---------------------
+```
+
+Add script hash:
+```c#
+Stack          Current command
+script hash  | \<script hash\>
+script hash  | 
+\<sig2\>     | 
+\<sig1\>     | 
+OP_0         | 
+---------------------
+```
+
+Check top elements are equal, 1 if true:
+```c#
+Stack          Current command
+1            | OP_Equal
+\<sig2\>     | 
+\<sig1\>     | 
+OP_0         | 
+---------------------
+```
+
+At this point, nodes will recognise the pattern of 1, sig, sig, 0 as the bip16 special rule. This essentially means: the potential spender provided the correct script corresponding to the hash, now proceed to validate the redeem script. 
+
+This is the fun part! We place the redeem script on the stack to be executed. This is because we know this is the correct spending conditions provided by the original depositer of funds. If the hash of the script did not match the original hash, OP_Equal would place a 0 instead of a 1, and the script would fail.
+
+Our stack now looks something like this:
+
+OP_Checkmultisig
+OP_3
+\<pubkey3\>
+\<pubkey2\>
+\<pubkey1\>
+OP_2
+\<sig2\>
+\<sig1\>
+OP_0
+
+The top 5 elements form our redeem script (notice it's reversed after placing it on the stack), the remaining items are the remaining signatures we need to verify. All we need to do now is make sure both signatures are valid using the corresponding public keys. Notice that there is a total 3 public keys. Any 2 may be used to validate signatures (hence 2 out of 3). We can execute the whole thing in one command, giving us a final value of 1 if the signatures are valid, or 0 if they are invalid (or if not enough signatures are valid to meet the spending condition of OP_M of OP_N). The OP_0 is consumed during the OP_Checkmultisig operation - the bug we mentioned earlier.
+
 
 [/Intro](/index.md)|[/Install](/install.md)|[/keys](/keys.md)|[/Crypto](ecc.md)|[/Wallet](wallet.md)|[/Transactions](transactions.md)|[/Script](script.md)|[/Blocks](blocks.md)|[/Mining](/mining.md)|[/SPV](spv.md)|[/Segwit](segwit.md)
