@@ -81,7 +81,7 @@ Stack         Current command
 --------------------
 ```
   
- <pubkeyhash>
+\<pubkeyhash\>
 ```
 Stack         Current command
 <pubkeyhash>| Add pubkey hash
