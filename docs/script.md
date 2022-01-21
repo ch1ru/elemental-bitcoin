@@ -314,7 +314,7 @@ This is the fun part! We place the redeem script on the stack to be executed. Th
 
 Our stack now looks something like this:
 
-OP_Checkmultisig\n
+OP_Checkmultisig
 OP_3
 \<pubkey3\>
 \<pubkey2\>
