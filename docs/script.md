@@ -15,6 +15,22 @@ Scriptsigs usually contain only two items: a signature and public key.
 035ca5c197fb8646d4871d7e930a1b7085f9406c44532fecfb3964d7f70d7c4bb3 //public key
 ```
 
+In segwit transaction, the scriptsig is a null-byte (0x00). There is also a segwit marker at the start of the transaction. This is because in segwit, the scriptsig (witness data) is not used in the ID caluculated (remember the txid is the transaction hash). This is to prevent malleability of transactions, which elliptic curve signatures are vulnerable to. To find out more about transaction malleability in elliptic curves, see this [article]. Instead there is a witness field outside the transaction, which contains the scriptsig:
+
+```
+Version 2
+Segwit: true
+Number of inputs: 1
+        Input 0
+                txid d989dd24e98e74bf24436b24c1910c61389de48b42feffe9ff136df1bc6a7819
+                txindex 1
+                Scriptsig: (none)
+                Witness: 30440220217bb0c181abb71b09e80577664be0bcba6903edb2969a6589e4b2c07c41d8f8022020855ecceb590430cffa3748b1eae97f523697423dc22ba1f5df901de2ab91c40102d4eef825ea8bf139a81a264faff3a45b5ce2d388a4b913e0d11aa9ae0f8f9ba8
+                Sequence feffffff
+```
+
+You can see that the format of the witness data is exactly the same as the scriptsig in legacy transactions, just in a different place.
+
 ## Scriptpubkey
 
 The scriptpubkey will contain the hash of the public key. When a spender tries to redeem coins, they have to prove that the public key they provide in the scriptsig hashes to the hash in the scriptsig, then verify that the signature is valid using that public key.
@@ -115,6 +131,10 @@ Stack        Current command
 ```
 
 If 1 is on the stack, it means the signature is valid. Yay! We can spend the coins! 
+
+## Coding this in LBitcoin
+
+We already 
 
 ## Scripting our own transactions
 
