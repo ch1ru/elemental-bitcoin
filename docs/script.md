@@ -48,14 +48,14 @@ Op_Checksig
 ```
 If you remember we said it was a stack-based language, so we simply execute each command, and any data element we place on the stack. Let's execute this one command at a time:
 
-<sig>
+\<sig\>
 ```
 Stack        Current command   
 <sig>      | Add signature
 -------------------
 ```
 
-<pubkey>
+\<pubkey\>
 ```
 Stack        Current command
 <Pubkey>   | Add pubkey
