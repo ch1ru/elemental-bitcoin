@@ -4,15 +4,15 @@
 
 Bitcoin has a scripting language called Script (it never really got given a name!) which defines spending conditions for transactions. An important aspect of bitcoin's scripting language is that it is Turing incomplete, meaning it comes without loops. Rather, it's a stack based language that will have a guaranteed finish. This is important since nodes are executing any operations that the spender defines. If there is an infinite loop somewhere, it could DDOS the entire bitcoin network!
 
-In the last chapter, we said that a transaction has inputs and outputs, and therein lies scriptsigs and scriptpubkeys respectively. As the name suggests, these are both scripts that contain commands.
+In the last chapter, we said that a transaction has inputs and outputs, and therein lies scriptsigs and scriptpubkeys respectively. As the name suggests, these are both scripts that contain commands. We will look at the most common type of scriptsigs and scriptpubkeys found in p2pkh (pay-to-pubkey-hash) transactions.
 
 ## Scriptsig
 
 Scriptsigs usually contain only two items: a signature and public key.
 
 ```
-3045af45e29f850bc41cc3df2
-025845838487372272723738
+3045022100f5386ba7fb3562a729b225be9474ad8abac10929c07c8c779bdb27ddf7d64ba90220244fe1e912481a1711a5a048b59b73a4c3961121edf040b81152c7729b6507dd0121 //signature
+035ca5c197fb8646d4871d7e930a1b7085f9406c44532fecfb3964d7f70d7c4bb3 //public key
 ```
 
 ## Scriptpubkey
