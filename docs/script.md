@@ -134,9 +134,35 @@ If 1 is on the stack, it means the signature is valid. Yay! We can spend the coi
 
 ## Coding this in LBitcoin
 
-We already 
+We already coded our own transactions in the last chapter, but most of it was done automatically for us. Let's do the same thing manually:
 
-## Scripting our own transactions
+To make a scriptsig:
+```c#
+Script scriptsig = new Script();
+scriptsig.Add(sig.DerEncode()); //signature in byte format
+scriptsig.Add(pubKey.Compressed); //public key in SEC compressed format
+```
+
+To make the scriptpubkey:
+```c#
+Script scriptpubkey = new Script();
+scriptpubkey.Add(opcodes.OP_DUP);
+scriptpubkey.Add(opcodes.OP_HASH160);
+scriptpubkey.Add(Hash.hash160(pubKey.Compressed));
+scriptpubkey.Add(opcodes.OP_EQUALVERIFY);
+scriptpubkey.Add(opcodes.OP_CHECKSIG);
+```
+
+The opcode commands are just a single-byte representation. For example:
+
+OP_Dup = 0x76
+OP_Hash160 = 0xa9
+OP_EqualVerify = 0x88
+OP_Checksig = 0xac
+
+## Scripting our own spending conditions
+
+What we have covered so far is sufficient for simple spending conditions, suitable for the majority of cases. But perhaps we want to add some complexity, for example create a 2/3 multisig solution. This way, even if 1 of the keys gets compromised, the funds still stay secure. This is useful for large amounts, or if there are multiple parties involved and we want to create spending conditions suited to their trust relationships. We have to go a bit further for this as our current method of single keys and static scripts is not enough. We must script our *own* spending conditions using a feature called P2SH (pay-to-script-hash). 
 
 
 
