@@ -313,7 +313,7 @@ At this point, nodes will recognise the pattern of 1, sig, sig, 0 as the bip16 s
 This is the fun part! We place the redeem script on the stack to be executed. This is because we know this is the correct spending conditions provided by the original depositer of funds. If the hash of the script did not match the original hash, OP_Equal would place a 0 instead of a 1, and the script would fail.
 
 Our stack now looks something like this:
-
+```
 OP_Checkmultisig
 OP_3
 \<pubkey3\>
@@ -323,6 +323,7 @@ OP_2
 \<sig2\>
 \<sig1\>
 OP_0
+```
 
 The top 5 elements form our redeem script (notice it's reversed after placing it on the stack), the remaining items are the remaining signatures we need to verify. All we need to do now is make sure both signatures are valid using the corresponding public keys. Notice that there is a total 3 public keys. Any 2 may be used to validate signatures (hence 2 out of 3). We can execute the whole thing in one command, giving us a final value of 1 if the signatures are valid, or 0 if they are invalid (or if not enough signatures are valid to meet the spending condition of OP_M of OP_N). The OP_0 is consumed during the OP_Checkmultisig operation - the bug we mentioned earlier.
 
