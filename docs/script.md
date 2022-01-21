@@ -31,9 +31,11 @@ Op_Checksig
 
 It's OK if this seems a little confusing, it should make a bit more sense once we combine the 2 scripts!
 
+**Also note: Segwit scriptpubkeys look a little different. They only have 2 items: OP_0 and the pubkey hash. This is due to the segwit softfork. Segwit nodes will recognise this scriptpubkey pattern and replace it with the same script as above. So don't be surprised if the scriptpubkey in segwit transactions looks different in block explorers.**
+
 ## Combining scripts
 
-So we have the script sig, which the spender provides to try to redeem the coins. We also have the preexisting scriptpubkey, as part of the output from the last transaction. When we combine them, it looks like this:
+So we have the script sig, which the spender provides to redeem the coins. We also have the preexisting scriptpubkey, as part of the output from the last transaction. When we combine them, it looks like this:
 
 ```
 <sig>
@@ -44,49 +46,64 @@ Op_Hash160
 Op_Equalverify
 Op_Checksig
 ```
-If you remember we said it was a stack-based language, so we simply execute each command, and any data element we place on the stack:
+If you remember we said it was a stack-based language, so we simply execute each command, and any data element we place on the stack. Let's execute this one command at a time:
 
+<sig>
 ```
 Stack        Current command   
 <sig>      | Add signature
 -------------------
+```
 
+<pubkey>
+```
 Stack        Current command
 <Pubkey>   | Add pubkey
 <sig>      |
 -------------------
+```
 
+OP_Dup (duplicate top item)
+ ```
 Stack        Current command
 <Pubkey>   | Op_dup (duplicate) 
 <Pubkey>   |
 <sig>      |
 -------------------
-
+  ```
+  
+OP_Hash160 (hash160 the top item)
+```
 Stack         Current command
 <pubkeyhash>| Op_hash160
 <pubkey>    |
 <sig>       |
 --------------------
-
+```
+  
+ <pubkeyhash>
+```
 Stack         Current command
 <pubkeyhash>| Add pubkey hash
 <pubkeyhash>|
 <pubkey>.   |
 <sig>.      |
 ---------------------
+ ```
 
-Op_equalverify is like 2 commands in 1: 
+OP_equalverify is 2 commands in 1: 
 
-add 1 to the stack if items are equal
-
+OP_Equal (add 1 to the stack if items are equal)
+```
 Stack        Current command
 1          | Op_Equal
 <pubkey>   |
 <sig>      |
 ---------------------
+```
 
-verify that 1 is on the stack
-
+OP_verify (check that that 1 is on the stack)
+```
 Stack        Current command
 <pubkey>   | Op_Verify
 <sig>      |
