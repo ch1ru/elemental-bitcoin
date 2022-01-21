@@ -164,6 +164,54 @@ OP_Checksig = 0xac
 
 What we have covered so far is sufficient for simple spending conditions, suitable for the majority of cases. But perhaps we want to add some complexity, for example create a 2/3 multisig solution. This way, even if 1 of the keys gets compromised, the funds still stay secure. This is useful for large amounts, or if there are multiple parties involved and we want to create spending conditions suited to their trust relationships. We have to go a bit further for this as our current method of single keys and static scripts is not enough. We must script our *own* spending conditions using a feature called P2SH (pay-to-script-hash). 
 
+## Creating a 2/3 multisig
 
+Let's say we want to do the above and create a bitcoin output that can only be spend with 2 out of 3 possible keys. To do this let's first create the keys:
+
+```c#
+var rand = csrng.genKey();
+PrivateKey pk1 = new PrivateKey(rand);
+PublicKey pub1 = pk.pubKey();
+
+rand = csrng.genKey();
+PrivateKey pk2 = new PrivateKey(rand);
+PublicKey pub2 = pk.pubKey();
+
+rand = csrng.genKey();
+PrivateKey pk3 = new PrivateKey(rand);
+PublicKey pub3 = pk.pubKey();
+```
+
+Now let's create the redeem script:
+
+```c#
+PublicKey[] pubkeys = new PublicKey[] { pub1, pub2, pub3 };
+Script redeemScript = Script.createMultisigRedeemScript(2, 3, pubkeys);
+
+//OR we can create it manually
+
+Script redeemScript = new Script();
+redeemScript.Add((byte)2);
+redeemScript.Add(pub1.Compressed);
+redeemScript.Add(pub2.Compressed);
+redeemScript.Add(pub3.Compressed);
+redeemScript.Add((byte)3);
+redeemScript.Add(opcodes.OP_CHECKMULTISIG);
+```
+
+For the scriptpubkey, we provide a hash of the script. This is why the transaction type is called pay-to-script-hash.
+
+```c#
+byte[] scriptHash = Hash.hash160(redeemScript.Serialise());
+Script scriptpubkey = Script.p2sh(scriptHash);
+
+//OR manually
+
+byte[] scriptHash = Hash.hash160(redeemScript.Serialise());
+Script scriptpubkey = new Script();
+scriptpubkey.Add(opcodes.OP_HASH160);
+scriptpubkey.Add(scriptHash);
+scriptpubkey.Add(opcodes.OP_EQUAL);
+```
 
 [/Intro](/index.md)|[/Install](/install.md)|[/keys](/keys.md)|[/Crypto](ecc.md)|[/Wallet](wallet.md)|[/Transactions](transactions.md)|[/Script](script.md)|[/Blocks](blocks.md)|[/Mining](/mining.md)|[/SPV](spv.md)|[/Segwit](segwit.md)
