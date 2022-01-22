@@ -78,6 +78,11 @@ No NUGET package as of yet, on it's way.
 
 Can be installed with NUGET packet manager or from [here](https://www.nuget.org/packages/SshNet.Security.Cryptography/1.3.0?_src=template)
 
+## Limitations
+
+Some of the networking capabilities need extending and contain bugs 🐛 
+Newer protocols used in p2p messaging such as addrv2 formats and compact blocks not present.  
+
 ## **Future Development**
 
 - Schnorr signature scheme and taproot-compatibility
