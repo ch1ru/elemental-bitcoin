@@ -327,5 +327,19 @@ OP_0
 
 The top 5 elements form our redeem script (notice it's reversed after placing it on the stack), the remaining items are the remaining signatures we need to verify. All we need to do now is make sure both signatures are valid using the corresponding public keys. Notice that there is a total 3 public keys. Any 2 may be used to validate signatures (hence 2 out of 3). We can execute the whole thing in one command, giving us a final value of 1 if the signatures are valid, or 0 if they are invalid (or if not enough signatures are valid to meet the spending condition of OP_M of OP_N). The OP_0 is consumed during the OP_Checkmultisig operation - the bug we mentioned earlier.
 
+## Summary
+
+- Script is a stack-based language for specifying spending conditions in bitcoin
+- It is turing incomplete (no possibility for loops) to prevent DDOS attacks occuring on the network
+- The scriptsig in most transactions contain a signature and public key
+- In segwit transactions the witness data is separate from the scriptsig field
+- The scriptpubkey contains the public key hash, and opcodes to check if the public key matches the hash, and the signatures are valid
+- We can specify our own spending conditions using p2sh, called a redeem script
+- The redeem script needs to be including in the scriptsig (or in the witness data for segwit transactions)
+-  The redeem script will contain the public keys of possible spending keys
+-  If the OP_Checkmultisig opcode is used (for p2sh multisig scripts) there has to be one additional element (0x00) because of the overflow bug
+
+Hopefully you understand more about scripting. In the next chapter, we will look at how blocks are constructed and interconnected in the bitcoin blockchain.
+
 
 [/Intro](/index.md)|[/Install](/install.md)|[/keys](/keys.md)|[/Crypto](ecc.md)|[/Wallet](wallet.md)|[/Transactions](transactions.md)|[/Script](script.md)|[/Blocks](blocks.md)|[/Mining](/mining.md)|[/SPV](spv.md)|[/Segwit](segwit.md)
