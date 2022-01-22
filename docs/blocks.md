@@ -2,7 +2,7 @@
 
 # Blocks
 
-A block is a data structure used for storing bitcoin transactions and the principle is used in many other cryptocurrencies. In the next chapter we will look at mining and how chaining the blocks together into a 'blockchain' gives it the properties of an immutable ledger. For now, we will just look at how an indivudual block is constructed. 
+A block is a data structure used for storing bitcoin transactions and the principle is used in many other cryptocurrencies. In the next chapter we will look at mining and how chaining the blocks together into a 'blockchain' gives it the properties of an immutable ledger. For now, we will just look at how an indivudual block is constructed, and how each block can be linked to the last one.
 
 ## Block headers
 
@@ -21,15 +21,21 @@ If you are unsure of some of these, we will cover the nonce, previous hash and d
 
 The block hash is calculated by the miners in a specific way, however it must include the header bytes we just mentioned. Parameters such as the nonce can be changed to give a 'correct' ID that is below a certain value, dictated by the current difficulty. 
 
-The byte values are appended together, and a potential block hash is the double sha256 digest of this input. I say potential block hash, or candidate hash, because in all liklihood it will not meet the diffulty parameters in the mining algorthm. Miners will compete to find the block hash that is low enough that it falls into the correct margin. 
+The byte values are appended together, and a potential block hash is the double sha256 digest of this input. I say potential block hash, or candidate hash, because in all liklihood it will not meet the diffulty parameters in the mining algorthm. Miners will compete to find the block hash that is low enough that it falls into the correct margin.
+
+## Block body
+
+The body of each block contains the transactions, stored in hex format. The capacity of a block is capped at 1MB. To get a thourough explanation as to why this is, I recommend this [article]. But essentially, there is a limited storage capacity of transactions. Some argue this is an artificial scarcity, but imagine all node operators (many are simply raspberry pis or cloud servers) have to store and validate every transaction since 2008. The 1MB limit maps to a very real limit on the availablity of hardware to store the transactions. If there was a bigger limit, such as in bitcoin cash (32MB) or sv (a ridiculous amount up to 4GB), it would dramatically effect the cost of running a node, and hence effect who could run the node and the decentralisation of nodes. 
+
+Despite this, it's possible to reduce the number of transactions stored in a block by running a node in 'Pruned' mode. This will remove transactions whose outputs have been spent. Furthermore, it's possible to run a light-client with limited access to storage resources, but can still validate transactions and prove that they have been included in a block. Both these possibilities become feasible with the use of Merkle trees.
 
 ## Merkle trees
 
-We haven't yet mentioned what the merkle root is. For the rest of the chapter, we will talk about merkle trees and how they are an important data structure used in blocks. 
+For the rest of the chapter, we will talk about merkle trees and how they are an important data structure used in blocks. 
 
 Merkle trees provide a way to maintain data integrity inside a block. The data in this case are the bitcoin transactions that make up the vast majority of the block. 
 
-To construct a tree, first we use the bitcoin transactions as leaf nodes by first hashing them, then arranging them in pairs at the base of the tree (this tree is an inverse one). Each pair is hashed together forming another set of pairs with 1/2n the size. If thre is an odd number of transaction hashes, the last hash is duplicated at the end of the set. This process is repeated until a single hash (merkle root is reached). 
+To construct a tree, first we use the bitcoin transactions as leaf nodes by first hashing them, then arranging them in pairs at the base of the tree (this tree is an inverse one). Each pair is hashed together forming another set of pairs with 1/2n the size. If thre is an odd number of transaction hashes, the last hash is duplicated at the end of the set. This process is repeated until a single hash (the merkle root). The merkle root is included in the block header.
 
 ![Merkle tree](/assets/merkletree.png)
 
