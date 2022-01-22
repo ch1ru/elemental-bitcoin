@@ -193,5 +193,19 @@ Congratulations, you've created your first bitcoin transaction! All you need to 
   
 **Note: This guide only explains how to construct a legacy transaction. If you want to know how to construct a segwit transaction, which has a slightly different format (albeit largely the same process), this [article] explains how to do it**.
 
+## Summary
+
+- Transactions in bitcoin can be contracted between 2 parties with no intermediary
+- Transactions consist of inputs (the coins we want to spend) and outputs (the destination of the funds)
+- Inputs themselves are outputs from previous transactions
+- Inputs consist of 4 things: transaction ID, index, scriptsig and sequence
+- Outputs consist of 2 things: amount and scriptpubkey
+- Each input must be signed for the transaction to be valid.
+- The sender signs the hash (sighash) of the transaction with their private key
+- The miner fee is the implicit difference between the inputs and outputs
+- Always use testnet bitcoin when testing software
+
+In the next chapter we'll look more closely at the scriptsig and scriptpubkey fields, and fill in the missing pieces we left out in this chapter.
+
 [/Intro](/index.md)|[/Install](/install.md)|[/keys](/keys.md)|[/Crypto](ecc.md)|[/Wallet](wallet.md)|[/Transactions](transactions.md)|[/Script](script.md)|[/Blocks](blocks.md)|[/Mining](/mining.md)|[/SPV](spv.md)|[/Segwit](segwit.md)
 
