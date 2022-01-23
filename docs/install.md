@@ -13,11 +13,11 @@ The easiest way to install is via NuGet package Manager in Visual Studio:
 
 ![NuGet install](https://github.com/ch1ru/elementary-bitcoin/blob/main/docs/assets/Nuget%20install.png)
 
-**To install with .NET core:**
+## To install with .NET core:
 
 ```dotnet add package LBitcoin```
 
-**To install using Packet Manager CLI:**
+## To install using Packet Manager CLI:
 
 ```Install-Package LBitcoin```
 
