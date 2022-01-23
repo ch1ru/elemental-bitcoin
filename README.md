@@ -80,7 +80,7 @@ Navigate to the ```Manage NuGet Packages``` window in visual studio and install 
 
 ```dotnet add package LBitcoin```
 
-**Install with Packet Manager CLI:**
+**Packet Manager CLI:**
 
 ```Install-Package LBitcoin```
 
