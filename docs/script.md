@@ -173,15 +173,15 @@ What we have covered so far is sufficient for simple spending conditions, suitab
 Let's say we want to do the above and create a bitcoin output that can only be spend with 2 out of 3 possible keys. To do this let's first create the keys:
 
 ```c#
-var rand = csrng.genKey();
+var rand = Csrng.GenKey();
 PrivateKey pk1 = new PrivateKey(rand);
 PublicKey pub1 = pk.pubKey();
 
-rand = csrng.genKey();
+rand = Csrng.GenKey();
 PrivateKey pk2 = new PrivateKey(rand);
 PublicKey pub2 = pk.pubKey();
 
-rand = csrng.genKey();
+rand = Csrng.GenKey();
 PrivateKey pk3 = new PrivateKey(rand);
 PublicKey pub3 = pk.pubKey();
 ```
@@ -190,7 +190,7 @@ Now let's create the redeem script:
 
 ```c#
 PublicKey[] pubkeys = new PublicKey[] { pub1, pub2, pub3 };
-Script redeemScript = Script.createMultisigRedeemScript(2, 3, pubkeys);
+Script redeemScript = Script.CreateMultisigRedeemScript(2, 3, pubkeys);
 
 //OR we can create it manually
 
@@ -200,22 +200,22 @@ redeemScript.Add(pub1.Compressed);
 redeemScript.Add(pub2.Compressed);
 redeemScript.Add(pub3.Compressed);
 redeemScript.Add((byte)3);
-redeemScript.Add(opcodes.OP_CHECKMULTISIG);
+redeemScript.Add(Opcodes.OP_CHECKMULTISIG);
 ```
 
 For the scriptpubkey, we provide a hash of the script. This is why the transaction type is called pay-to-script-hash.
 
 ```c#
 byte[] scriptHash = Hash.hash160(redeemScript.Serialise());
-Script scriptpubkey = Script.p2sh(scriptHash);
+Script scriptpubkey = Script.P2SH(scriptHash);
 
 //OR manually
 
 byte[] scriptHash = Hash.hash160(redeemScript.Serialise());
 Script scriptpubkey = new Script();
-scriptpubkey.Add(opcodes.OP_HASH160);
+scriptpubkey.Add(Opcodes.OP_HASH160);
 scriptpubkey.Add(scriptHash);
-scriptpubkey.Add(opcodes.OP_EQUAL);
+scriptpubkey.Add(Opcodes.OP_EQUAL);
 ```
 When we send bitcoin to the corresponding address with this hash, it will be locked with a multisig contract. Providing 2/3 keys is needed to spend the funds.
 
@@ -224,7 +224,7 @@ In the pay-to-pubkey script type, we have to provide the public key, since it's 
 ```c#
 fixme: show how to get signatures
 Script scriptsig = new Script();
-scriptsig.Add(opcodes.OP_0);
+scriptsig.Add(Opcodes.OP_0);
 scriptsig.Add(sig1.DerEncode());
 scriptsig.Add(sig2.DerEncode());
 redeemScript.Serialise();
