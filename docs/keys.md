@@ -16,10 +16,10 @@ using LBitcoin;
 using LBitcoin.Ecc;
 ...
 
-var rand = csrng.genKey();
+var rand = Csrng.GenKey();
 PrivateKey pk = new PrivateKey(rand);
 PublicKey pubKey = pk.pubKey();
-BitcoinAddress addr = pubKey.getAddr(AddressType.nativeSegwit);
+BitcoinAddress addr = pubKey.GetAddr(AddressType.nativeSegwit);
 Console.WriteLine(addr);
 
 //output: bc1qvmpf6cgqrsntk5mndduqaqfgwcf6thv4qdc8nq
