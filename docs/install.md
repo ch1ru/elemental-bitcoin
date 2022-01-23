@@ -11,7 +11,7 @@ The easiest way to install is via NuGet package Manager in Visual Studio:
 - Navigate to ```Project > Manage Nuget Packets```
 - Search for LBitcoin and select the latest version
 
-![NuGet install](https://github.com/ch1ru/elementary-bitcoin/blob/main/docs/assets/Nuget%20install.png)
+![NuGet install](/assets/Nuget%20install.png)
 
 ## To install with .NET core:
 
