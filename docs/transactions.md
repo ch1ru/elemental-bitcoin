@@ -82,10 +82,10 @@ using LBitcoin;
 using LBitcoin.Ecc;
 ...
 
-var rand = csrng.genKey();
+var rand = Csrng.GenKey();
 PrivateKey pk = new PrivateKey(rand);
 PublicKey pubKey = pk.pubKey();
-BitcoinAddress addr = pubKey.getAddr(AddressType.nativeSegwit, testnet: true);
+BitcoinAddress addr = pubKey.GetAddr(AddressType.nativeSegwit, testnet: true);
 Console.WriteLine(addr);
 Console.WriteLine(pk);
 //Output:
@@ -107,19 +107,19 @@ Copy the transaction id (this will be used as our input). However we also need t
 Let's fetch this transaction:
 
 ```c#
-Transaction selftx = txFetcher.fetch("d62c44cf05a2d02cce01d6da3c56a785708168ec472f85d9d8a47042fe217fa4", testnet: true);
-selftx.getData(); //this will print information about the transaction to console
+Transaction selftx = TxFetcher.Fetch("d62c44cf05a2d02cce01d6da3c56a785708168ec472f85d9d8a47042fe217fa4", testnet: true);
+selftx.GetData(); //this will print information about the transaction to console
 ```
 
 Now lets construct our own transaction:
 
 ```c#
 //creates an input using the transaction ID and index
-TxIn input = new TxIn(selftx.getHash(), 1); 
+TxIn input = new TxIn(selftx.GetHash(), 1); 
 //specify the bitcoin address we want to send funds to
 BitcoinAddress sendaddr = new BitcoinAddress("tb1qvf2njewp9qgjdl4z0tv9hvqx6ntducvtqddy7m"); 
 //create an output of 500,000 sats and add an encumberance (scriptpubkey)
-TxOut output = new TxOut(490000, Script.p2pkh(sendaddr.getHash(segwit: true, type: 0, testnet: true))); 
+TxOut output = new TxOut(490000, Script.P2PKH(sendaddr.GetHash(segwit: true, type: 0, testnet: true))); 
 //instanstiate a transaction using the version, inputs and outputs, locktime of 0. This will be a legacy transaction (not segwit) and on the test network
 Transaction recipienttx = new Transaction(version: 1, new TxIn[] { input }, new TxOut[] { output }, 0, testnet: true, segwit: false);  
 ```
@@ -140,10 +140,10 @@ This may seem obvious but is worth explaining. We are sending the bitcoin back t
 We are almost finishing contructing our transaction, however we still haven't signed the inputs, proving we can move the funds. Let's do this now:
 
 ```c#
-if(!recipienttx.signInput(0, pk)) {
+if(!recipienttx.SignInput(0, pk)) {
   Console.WriteLine("Invalid signature"); //check if our signature is valid
 }
-recipienttx.getData();
+recipienttx.GetData();
 ```
 
 There is only 1 input in our transaction (remember this is the new transaction we created, don't get confused between this one and the transaction we already broadcasted). If there were multiple inputs, we would need to sign each one.
