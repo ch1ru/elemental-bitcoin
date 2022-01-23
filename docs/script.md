@@ -138,6 +138,10 @@ We already coded our own transactions in the last chapter, but most of it was do
 
 To make a scriptsig:
 ```c#
+using LBitcoin;
+using LBitcoin.Ecc;
+...
+
 Script scriptsig = new Script();
 scriptsig.Add(sig.DerEncode()); //signature in byte format
 scriptsig.Add(pubKey.Compressed); //public key in SEC compressed format
