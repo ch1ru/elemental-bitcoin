@@ -12,10 +12,14 @@ So let's see how someone can generate their own bitcoin address.
 
 The code:
 ```c#
+using LBitcoin;
+using LBitcoin.Ecc;
+...
+
 var rand = csrng.genKey();
 PrivateKey pk = new PrivateKey(rand);
 PublicKey pubKey = pk.pubKey();
-BitcoinAddress addr = pubKey.getAddr();
+BitcoinAddress addr = pubKey.getAddr(AddressType.nativeSegwit);
 Console.WriteLine(addr);
 
 //output: bc1qvmpf6cgqrsntk5mndduqaqfgwcf6thv4qdc8nq
