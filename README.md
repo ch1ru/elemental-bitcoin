@@ -68,9 +68,21 @@ Transaction tx = new Transaction(version, txins, txouts, locktime);
 
 See our beginner's [Tutorial](https://ch1ru.github.io/elementary-bitcoin/) 
 
-## Install with NUGET Packet Manager
+## How to use?
 
-No NUGET package as of yet, on it's way.
+**Install with NUGET Packet Manager:**
+
+Navigate to the ```Manage NuGet Packages``` window in visual studio and install *LBitcoin* package.
+
+![Nuget install](https://github.com/ch1ru/elementary-bitcoin/blob/main/docs/assets/Nuget%20install.png)
+
+**Install with .NET core:**
+
+```dotnet add package LBitcoin```
+
+**Install with Packet Manager CLI:**
+
+```Install-Package LBitcoin```
 
 ## Dependencies
 
