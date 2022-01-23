@@ -16,7 +16,7 @@ Wordlist wordlist = new Wordlist();
 Mnemonic mnemonic = new Mnemonic(wordlist, 12, "password123");
 Console.WriteLine(mnemonic);
 
-HDPrivate Key extKey = new HDPrivateKey(mnemonic);
+HDPrivateKey extKey = new HDPrivateKey(mnemonic);
 Console.WriteLine(extKey);
 HDPublicKey xpub = extKey.Neuter();
 Console.WriteLine(xpub);
