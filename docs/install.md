@@ -2,6 +2,8 @@
 
 # Installing the Elementary-bitcoin library package
 
+You need to first import the library package *LBitcoin* as a pre-requisite. There are a number of ways to do this. 
+
 ## Installing via NuGet
 
 The easiest way to install is via NuGet package Manager in Visual Studio:
