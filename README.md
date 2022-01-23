@@ -13,10 +13,10 @@ Largely based on Jimmy Song's *Programming Bitcoin* book, ported in C#.
 
 **Generate bitcoin address**
 ```c#
-var rand = csrng.genKey();
+var rand = Csrng.GenKey();
 PrivateKey pk = new PrivateKey(rand);
 PublicKey pubKey = pk.pubKey();
-BitcoinAddress addr = pubKey.getAddr(AddressType.nativeSegwit, testnet: true);
+BitcoinAddress addr = pubKey.GetAddr(AddressType.nativeSegwit, testnet: true);
 Console.WriteLine(addr);
 
 //tb1qyk0j2yt44z4y9rns98duph7pkuarde5hhtskth
@@ -25,11 +25,11 @@ Console.WriteLine(addr);
  **Signing a message**
  ```c#
  byte[] message = Encoding.UTF8.GetBytes("This is an important message");
- Signature sig = pk.sign(message);
+ Signature sig = pk.Sign(message);
  ```
  and verify
  ```c#
-if(pubKey.verify("This is an important message", sig)) {
+if(pubKey.Verify("This is an important message", sig)) {
 	Console.WriteLine("signature is valid");
 }
 else {
@@ -43,15 +43,15 @@ else {
 Inputs = previous txid + txindex + scriptSig (unlocking script) + sequence
 ```c#
 Script scriptSig = new Script();
-scriptSig.Add(sig.derEncode());
-scriptSig.Add(pubKey.getCompressed());
+scriptSig.Add(sig.DerEncode());
+scriptSig.Add(pubKey.GetCompressed());
 TxIn input = new TxIn(prevTxid, 0, scriptSig);
 ```
 
 Outputs = amount + scriptPubKey (locking script)
 ```c#
 byte[] hashedOutput = Hash.hash160(pubKey.getCompressed());
-Script lockingScript = Script.p2wpkh(hashedOutput);
+Script lockingScript = Script.P2WPKH(hashedOutput);
 TxOut output = new TxOut(100000, lockingScript); //output for 100,000 satoshis
 ```
 
