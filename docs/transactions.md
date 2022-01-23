@@ -78,6 +78,10 @@ To get testnet bitcoin you can visit a faucet such as [add faucet address]. You'
 Next, let's create a testnet address and the corresponding private key:
 
 ```c#
+using LBitcoin;
+using LBitcoin.Ecc;
+...
+
 var rand = csrng.genKey();
 PrivateKey pk = new PrivateKey(rand);
 PublicKey pubKey = pk.pubKey();
