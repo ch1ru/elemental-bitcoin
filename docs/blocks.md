@@ -66,6 +66,6 @@ Previous block hash 8ec39428b17323fa0ddec8e887b4a7c53b8c0a0a220cfd00000000000000
 Block header 020000208ec39428b17323fa0ddec8e887b4a7c53b8c0a0a220cfd0000000000000000005b0750fce0a889502d40508d39576821155e9c9e3f5c3157f961db38fd8b25be1e77a759e93c0118a4ffd71d
 Block hash 2375044d646ad73594dd0b37b113becdb03964584c9e7e000000000000000000
 ```
-
+**Note: The block hash is reversed due to endianess**
 
 [/Intro](/index.md)|[/Install](/install.md)|[/keys](/keys.md)|[/Crypto](ecc.md)|[/Wallet](wallet.md)|[/Transactions](transactions.md)|[/Script](script.md)|[/Blocks](blocks.md)|[/Mining](/mining.md)|[/SPV](spv.md)|[/Segwit](segwit.md)
