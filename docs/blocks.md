@@ -41,4 +41,31 @@ To construct a tree, first we use the bitcoin transactions as leaf nodes by firs
 
 An important feature of the merkle tree is that you can't change a single byte in the transaction without changing its hash. This subsequently affects the merkle root hash, which changes the overall block hash *and* every single block built on this block! If you remember, the block hash calculation uses the previous block hash as input. This is important as we shall see in the next chapter on bitcoin mining. 
 
+## Parsing a block
+
+Let's parse a block in hex format to extract information:
+
+```c#
+BigInteger blockint = BigInteger.Parse("020000208ec39428b17323fa0ddec8e887b4a7c53b8c0a0a220cfd0000000000000000005b0750fce0a889502d40508d39576821155e9c9e3f5c3157f961db38fd8b25be1e77a759e93c0118a4ffd71d", System.Globalization.NumberStyles.HexNumber);
+byte[] blockBytes = blockint.ToByteArray(true, true);
+Stream s = new MemoryStream(blockBytes);
+Block block = Block.Parse(s);
+Console.WriteLine("Version {0}", block.Version);
+Console.WriteLine("Merkle root {0}", Byte.bytesToString(block.MerkleRoot));
+Console.WriteLine("Previous block hash {0}", Byte.bytesToString(block.PrevBlock));
+Console.WriteLine("Block header {0}", Byte.bytesToString(block.GetHeader()));
+Console.WriteLine("Block hash {0}", Byte.bytesToString(block.CalculateHash()));
+```
+
+The output:
+
+```
+Version 536870914
+Merkle root 5b0750fce0a889502d40508d39576821155e9c9e3f5c3157f961db38fd8b25be
+Previous block hash 8ec39428b17323fa0ddec8e887b4a7c53b8c0a0a220cfd000000000000000000
+Block header 020000208ec39428b17323fa0ddec8e887b4a7c53b8c0a0a220cfd0000000000000000005b0750fce0a889502d40508d39576821155e9c9e3f5c3157f961db38fd8b25be1e77a759e93c0118a4ffd71d
+Block hash 2375044d646ad73594dd0b37b113becdb03964584c9e7e000000000000000000
+```
+
+
 [/Intro](/index.md)|[/Install](/install.md)|[/keys](/keys.md)|[/Crypto](ecc.md)|[/Wallet](wallet.md)|[/Transactions](transactions.md)|[/Script](script.md)|[/Blocks](blocks.md)|[/Mining](/mining.md)|[/SPV](spv.md)|[/Segwit](segwit.md)
