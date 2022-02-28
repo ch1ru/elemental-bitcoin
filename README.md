@@ -99,7 +99,8 @@ Newer protocols used in p2p messaging such as addrv2 formats and compact blocks 
 
 - Schnorr signature scheme and taproot-compatibility
 - Replace bip37 legacy bloom filters with bip158 compact blocks
-- Add support for torv2 &torv3
+- Add RPC commands
+- Add opcodes for contructing HTLCs
 - Add version 2 network address formats
 - Add cmpctBlock network commands
 
